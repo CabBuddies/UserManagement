@@ -1,0 +1,25 @@
+POST http://localhost:3000/user/registration
+Content-Type: application/json
+
+{
+    "email":"konda.nihal5@gmail.com",
+    "password":"Mrox5497",
+    "firstName":"Nihal",
+    "lastName":"Konda",
+    "phoneNumber":"9165139005"
+}
+
+###
+
+POST http://localhost:3000/user/login
+Content-Type: application/json
+
+{
+    "email":"konda.nihal5@gmail.com",
+    "password":"Mrox5497"
+}
+
+###
+
+GET http://localhost:3000/jwt/decode
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlN2RmY2M1MWViMTQwMzQ3OWU1OTgyOCIsImlhdCI6MTU4NTMyMTA2OCwiZXhwIjoxNTg1MzIxNjY4fQ.nHFp5DrTO9VRUe1tW33AnfYHrkU5KaxMXVPReLs-eV8
