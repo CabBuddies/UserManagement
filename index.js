@@ -4,15 +4,17 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv').config()
 
-app.listen(3000,()=>{
-    console.log('listening on 3000')
+const PORT = process.env.PORT || 3000
+
+app.listen(PORT,()=>{
+    console.log('listening on '+PORT)
 });
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://ikmv:ikmv@localhost:27017/UserManagement',{
+mongoose.connect('mongodb+srv://ikmv:ikmv@cluster0-hnnbh.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useUnifiedTopology: true
 })
