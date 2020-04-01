@@ -21,5 +21,5 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/jwt/decode
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlN2RmY2M1MWViMTQwMzQ3OWU1OTgyOCIsImlhdCI6MTU4NTMyMTA2OCwiZXhwIjoxNTg1MzIxNjY4fQ.nHFp5DrTO9VRUe1tW33AnfYHrkU5KaxMXVPReLs-eV8
+GET https://cabbuddies-um.herokuapp.com/jwt/decode
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlODRmNGFlZTExYTY3MDAxNzVjMGUzOCIsImlhdCI6MTU4NTc3MjA4NCwiZXhwIjoxNTg1Nzc4MDg0fQ.3tes7BccxvFh00rZk0kjjf1-JWcWb3mQxeAj2oDiYro

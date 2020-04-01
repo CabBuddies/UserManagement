@@ -34,6 +34,11 @@ const userDetailsSchema = mongoose.Schema({
         type:String,
         trim: true,
         default:''
+    },
+    displayPicture:{
+        type:String,
+        trim: true,
+        default:''
     }
 });
 
