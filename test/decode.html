@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<form sample-action="/jwt/decode"  id="form">
+    <input type="submit">
+</form>
+<pre></pre>
+<script>
+  $('#form').on('submit', function(e) { //use on if jQuery 1.7+
+        e.preventDefault();  //prevent form from submitting
+        //var data = $("#form :input").serializeArray();
+        var action = $("#form").attr("sample-action");
+        //console.log(data); //use the console for debugging, F12 in Chrome, not alerts
+        submitData(action);
+    });
+    console.log('body loaded');
+
+
+function submitData(action){
+
+    $.ajax({
+            url: action,
+            type: 'GET',
+            dataType: 'json',
+            headers: {
+                'Authorization': 'Basic '+localStorage.getItem("accessToken")
+            },
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+               // CallBack(result);
+               console.log(result)
+
+            $("pre").html(JSON.stringify(result, undefined, 2));
+            },
+            error: function (error) {
+                
+            }
+        });
+    
+}
+</script>
+
+</body>
+</html>

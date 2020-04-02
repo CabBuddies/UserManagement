@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<form sample-action="/user/registration" method="post" id="form">
+    <input name="email" placeholder="email"><br>
+    <input name="password" placeholder="password"><br>
+    <input name="firstName" placeholder="firstName"><br>
+    <input name="lastName" placeholder="lastName"><br>
+    <input name="phoneNumber" placeholder="phoneNumber"><br>
+    <input type="submit">
+</form>
+
+<pre></pre>
+
+<script>
+  $('#form').on('submit', function(e) { //use on if jQuery 1.7+
+        e.preventDefault();  //prevent form from submitting
+        var data = $("#form :input").serializeArray();
+        var action = $("#form").attr("sample-action");
+        console.log(data); //use the console for debugging, F12 in Chrome, not alerts
+        submitData(action,data);
+    });
+    console.log('body loaded');
+
+
+function submitData(action,data){
+    var jdata={}
+    for(let i=0;i<data.length;i++){
+        jdata[data[i].name]=data[i].value;
+    }
+    console.log(jdata);
+    
+    $.post(action,jdata,function(data,status){
+        console.log(status);
+        console.log(data);
+        $("pre").html(JSON.stringify(data, undefined, 2));
+    });
+    
+}
+</script>
+
+</body>
+</html>
