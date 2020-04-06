@@ -61,7 +61,8 @@ router.post('/login', async (req,res)=>{
     })
     console.log(user)
     if(encryption.checkPassword(user.userAuth.password,req.body.password)){
-        let accessToken = jwt.sign({id:user._id},process.env.ACCESS_TOKEN_SECRET,{
+        const expirationTime = new Date(new Date().getTime() + 6000*1000);
+        let accessToken = jwt.sign({id:user._id,expirationTime},process.env.ACCESS_TOKEN_SECRET,{
             expiresIn:'6000s'
         })
         let refreshToken = jwt.sign({id:user._id},process.env.REFRESH_TOKEN_SECRET)

@@ -6,7 +6,7 @@ router.get('/decode', authenticateToken, async (req,res)=>{
     try {
         let user = await User.findById(req.val.id)
         console.log(user)
-        res.send(packageUserDetailsForMicroService(user))
+        res.send({user:packageUserDetailsForMicroService(user),'expirationTime':req.val.expirationTime})
     } catch (error) {
         res.send(error)
     }
