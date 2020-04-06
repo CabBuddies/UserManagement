@@ -5,8 +5,10 @@ const jwt = require('jsonwebtoken');
 router.get('/decode', authenticateToken, async (req,res)=>{
     try {
         let user = await User.findById(req.val.id)
+        console.log('==========>JwtDecodeDbUser')
         console.log(user)
         const result = {user:packageUserDetailsForMicroService(user),'expirationTime':req.val.expirationTime}
+        console.log('==========>JwtDecodePackagedResult')
         console.log(result)
         res.send(result)
     } catch (error) {
