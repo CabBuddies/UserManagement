@@ -37,7 +37,7 @@ router.post('/registration', async (req,res)=>{
         res.send({error:err.message})
     })
 
-    res.send(user)
+    res.send(createJwt(user))
 })
 
 
@@ -61,14 +61,18 @@ router.post('/login', async (req,res)=>{
     })
     console.log(user)
     if(encryption.checkPassword(user.userAuth.password,req.body.password)){
-        const expirationTime = new Date(new Date().getTime() + 6000*1000);
-        let accessToken = jwt.sign({id:user._id,expirationTime},process.env.ACCESS_TOKEN_SECRET,{
-            expiresIn:'6000s'
-        })
-        let refreshToken = jwt.sign({id:user._id},process.env.REFRESH_TOKEN_SECRET)
-        return res.send({accessToken,refreshToken})
+        return res.send(createJwt(user))
     }    
     res.send({error:'Invalid Login'})
 })
+
+function createJwt(user){
+    const expirationTime = new Date(new Date().getTime() + 6000*1000);
+    let accessToken = jwt.sign({id:user._id,expirationTime},process.env.ACCESS_TOKEN_SECRET,{
+        expiresIn:'6000s'
+    })
+    let refreshToken = jwt.sign({id:user._id},process.env.REFRESH_TOKEN_SECRET)
+    return {accessToken,refreshToken}
+}
 
 module.exports = router
