@@ -15,6 +15,11 @@ const userAuthSchema = mongoose.Schema({
         trim: true,
         required: 'Password is required',
         match: [/(?=.{8,})/, 'Please provide a valid password']
+    },
+    registrationType:{
+        type: String, 
+        enum : ['InApp', 'Google', 'Facebook', 'Twitter', 'LinkedIn'], 
+        default: 'InApp'
     }
 });
 

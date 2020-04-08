@@ -14,13 +14,14 @@ POST with JSON body
 }
 */
 router.post('/registration', async (req,res)=>{
-    let { email, password, firstName, lastName, phoneNumber } = req.body;
+    let { email, password, firstName, lastName, phoneNumber, registrationType } = req.body;
     console.log(req.body)
     password = encryption.encryptPassword(password)
     const user = await User.create({
         userAuth:{
             email,
-            password
+            password,
+            registrationType
         },
         userDetails:{
             firstName,

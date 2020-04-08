@@ -19,6 +19,7 @@ router.get('/decode', authenticateToken, async (req,res)=>{
 function packageUserDetailsForMicroService(user){
     let details = JSON.parse(JSON.stringify(user.userDetails))
     details['email'] = user.userAuth.email
+    details['registrationType'] = user.userAuth.registrationType
     //details['userId'] = user._id.toString()
     //delete details['_id']
     return details
