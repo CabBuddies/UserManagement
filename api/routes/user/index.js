@@ -73,7 +73,7 @@ function createJwt(user){
         expiresIn:'6000s'
     })
     let refreshToken = jwt.sign({id:user._id},process.env.REFRESH_TOKEN_SECRET)
-    return {accessToken,refreshToken}
+    return {accessToken,refreshToken,expirationTime}
 }
 
 module.exports = router
