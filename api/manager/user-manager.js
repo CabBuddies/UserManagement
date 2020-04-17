@@ -2,17 +2,20 @@ const User = require('../models/user');
 const encryption = require('../utils/encryption');
 
 async function createUser(user){
+    console.log(user)
     user.password = encryption.encryptPassword(user.password)
     user.userVerifiedDetails={
         email:'',
         phoneNumber:''
     }
     let errMsg = '';
+    console.log(user)
     user = await User.create(user)
     .catch(err=>{
         console.log(err.message)
         errMsg = err.message
     })
+    console.log(user)
     return errMsg === '' ? user : {error:errMsg}
 }
 
