@@ -1,7 +1,6 @@
-const User = require('../../models/user');
-const encryption = require('../../utils/encryption');
 let router = require('express').Router();
 const jwt = require('jsonwebtoken');
+const UserManager = require('../../manager/user-manager')
 
 /*
 POST with JSON body
@@ -16,8 +15,7 @@ POST with JSON body
 router.post('/registration', async (req,res)=>{
     let { email, password, firstName, lastName, phoneNumber, registrationType } = req.body;
     console.log(req.body)
-    password = encryption.encryptPassword(password)
-    const user = await User.create({
+    const user = await UserManager.createUser({
         userAuth:{
             email,
             password,
@@ -27,18 +25,13 @@ router.post('/registration', async (req,res)=>{
             firstName,
             lastName,
             phoneNumber
-        },
-        userVerifiedDetails:{
-            email:'',
-            phoneNumber:''
         }
-    })
-    .catch(err=>{
-        console.log(err.message)
-        res.send({error:err.message})
-    })
+    });
 
-    res.send(createJwt(user))
+    if(user.error !== undefined)
+        res.send(user)
+    else    
+        res.send(createJwt(user))
 })
 
 
@@ -56,15 +49,14 @@ returns
 }
 */
 router.post('/login', async (req,res)=>{
-    const user = await User.findOne({'userAuth.email':req.body.email}).catch(err=>{
-        console.log(err)
-        return res.send({error:err.message})
-    })
-    console.log(user)
-    if(encryption.checkPassword(user.userAuth.password,req.body.password)){
-        return res.send(createJwt(user))
-    }    
-    res.send({error:'Invalid Login'})
+    const user = await UserManager.getUser({
+        email:req.body.email,
+        password:req.body.password
+    })    
+    if(user.error !== undefined)
+        res.send(user)
+    else    
+        res.send(createJwt(user))
 })
 
 function createJwt(user){

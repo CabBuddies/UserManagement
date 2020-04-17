@@ -76,4 +76,6 @@ userSchema.post('save', function(error, doc, next) {
     }
 });
 
+userSchema.index({'userAuth.email':1},{unique:true})
+
 module.exports = mongoose.model('User',userSchema);

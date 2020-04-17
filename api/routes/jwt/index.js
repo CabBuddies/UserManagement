@@ -1,13 +1,16 @@
-const User = require('../../models/user');
 let router = require('express').Router();
-const jwt = require('jsonwebtoken');
+const authToken = require('../../utils/auth-token')
+const UserManager = require('../../manager/user-manager')
 
-router.get('/decode', authenticateToken, async (req,res)=>{
+router.get('/decode', authToken.authenticateToken, async (req,res)=>{
     try {
-        let user = await User.findById(req.val.id)
+        let user = await UserManager.getUserById(req.val.id)
         console.log('==========>JwtDecodeDbUser')
         console.log(user)
-        const result = {user:packageUserDetailsForMicroService(user),'expirationTime':req.val.expirationTime}
+        const result = {
+            user:packageUserDetailsForMicroService(user),
+            expirationTime:req.val.expirationTime
+        }
         console.log('==========>JwtDecodePackagedResult')
         console.log(result)
         res.send(result)
@@ -23,20 +26,6 @@ function packageUserDetailsForMicroService(user){
     //details['userId'] = user._id.toString()
     //delete details['_id']
     return details
-}
-
-function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization']
-    const token = authHeader && authHeader.split(' ')[1]
-    
-    if (token == null) return res.sendStatus(401)
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, val) => {
-        console.log(err)
-        if (err) return res.sendStatus(403)
-        req.val = val
-        next()
-    })
 }
 
 module.exports = router

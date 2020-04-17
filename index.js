@@ -34,6 +34,8 @@ app.get('/',(req,res)=>{
 
 app.use('/user',require('./api/routes/user'))
 app.use('/jwt',require('./api/routes/jwt'))
+app.use('/media',require('./api/routes/media'))
+app.use('/flush',require('./api/routes/flush'))
 app.use('/test',require('./test'))
 
 console.log(app._router.stack)
