@@ -29,7 +29,7 @@ async function getUser(user){
         return {error:errMsg}
 
     if(encryption.checkPassword(duser.userAuth.password,user.password)){
-        return createJwt(duser)
+        return duser
     }
 
     return {error:'Invalid Login'}
