@@ -3,7 +3,7 @@ const encryption = require('../utils/encryption');
 
 async function createUser(user){
     console.log(user)
-    user.password = encryption.encryptPassword(user.userAuth.password)
+    user.userAuth.password = encryption.encryptPassword(user.userAuth.password)
     user.userVerifiedDetails={
         email:'',
         phoneNumber:''
