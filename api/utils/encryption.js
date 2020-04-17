@@ -7,6 +7,7 @@ function getKey(val){
 
 module.exports={
     encryptPassword:function(password){
+        console.log(password)
         return crypt(getKey(password)).encrypt(password)
     },
     checkPassword:function(encrypted,plain){

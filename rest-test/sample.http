@@ -1,8 +1,9 @@
-POST https://cabbuddies-um.herokuapp.com/user/registration
+
+POST http://localhost:5001/user/registration
 Content-Type: application/json
 
 {
-    "email":"konda.nihal5@gmail.com",
+    "email":"nihalkonda@gmail.com",
     "password":"Mrox5497",
     "firstName":"Nihal",
     "lastName":"Konda",
