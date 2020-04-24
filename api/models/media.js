@@ -30,6 +30,6 @@ const mediaSchema = mongoose.Schema({
     ]
 });
 
-userSchema.index({user:1,url:1},{unique:true})
+mediaSchema.index({user:1,url:1},{unique:true})
 
 module.exports = mongoose.model('Media',mediaSchema);
