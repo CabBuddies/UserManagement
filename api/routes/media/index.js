@@ -21,7 +21,7 @@ router.post('/create',authToken.authenticateToken, async (req,res)=>{
 
 })
 
-router.post('/list',authToken.authenticateToken, async (req,res)=>{
+router.get('/list',authToken.authenticateToken, async (req,res)=>{
     
     let user = await UserManager.getUserById(req.val.id)
     
