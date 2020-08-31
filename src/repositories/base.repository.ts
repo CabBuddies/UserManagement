@@ -21,8 +21,10 @@ class BaseRepository implements Respository{
         console.log(query,pageSize,pageNum)
         const resultTotalSize = await this.model.count(query);
         let result = [];
-        if(resultTotalSize > 0)
+        if(resultTotalSize > 0){
+            console.log('base.repository',query);
             result = await this.model.find(query).skip(skips).limit(pageSize).select(attributes);
+        }
         const resultSize = result.length
         console.log(result)
         return {

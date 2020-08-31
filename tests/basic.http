@@ -1,5 +1,5 @@
 # @name signUpAPI
-POST http://localhost:4000/api/v1/user/sign_up
+POST http://localhost:4000/api/v1/auth/sign_up
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 ###
 # @name signInAPI
 
-POST http://localhost:4000/api/v1/user/sign_in
+POST http://localhost:4000/api/v1/auth/sign_in
 Content-Type: application/json
 
 {
@@ -30,11 +30,13 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:4000/api/v1/user?pageSize=1&pageNum=2
+GET http://localhost:4000/api/v1/user
 Content-Type: application/json
 
 {
-    "query":{"email":"nihal+test1@cabbuddies.com"}
+    "query":{
+        "email": { "$regex": "1", "$options": "i" }
+    }
 }
 
 ###
@@ -42,5 +44,5 @@ GET http://localhost:4000/api/v1/user/me
 Authorization: Basic {{accessToken}}
 
 ###
-GET http://localhost:4000/api/v1/user/5f4bc10af0bb26189721aa57
+GET http://localhost:4000/api/v1/user/5f4c4eec9520541da7fdbe0a
 Authorization: Basic {{accessToken}}

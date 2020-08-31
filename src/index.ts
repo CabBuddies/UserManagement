@@ -15,8 +15,9 @@ mongoose.connect(config.MONGO_URI,{
 
 const router :express.Router = express.Router()
 
-router.use('/user',routes.AuthRoutes);
+router.use('/auth',routes.AuthRoutes);
 router.use('/user',routes.UserRoutes);
+router.use('/test',routes.TestRoutes);
 
 app.use('/api/v1',router);
 
