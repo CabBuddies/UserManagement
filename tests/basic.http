@@ -1,0 +1,46 @@
+# @name signUpAPI
+POST http://localhost:4000/api/v1/user/sign_up
+Content-Type: application/json
+
+{
+    "email":"nihal+test2@cabbuddies.com",
+    "password":"strong",
+    "firstName":"Nihal",
+    "lastName":"Konda"
+}
+
+###
+
+@accessToken = {{signUpAPI.response.body.$.accessToken}}
+
+###
+# @name signInAPI
+
+POST http://localhost:4000/api/v1/user/sign_in
+Content-Type: application/json
+
+{
+    "email":"nihal+test2@cabbuddies.com",
+    "password":"strong"
+}
+
+###
+
+@accessToken = {{signInAPI.response.body.$.accessToken}}
+
+
+###
+GET http://localhost:4000/api/v1/user?pageSize=1&pageNum=2
+Content-Type: application/json
+
+{
+    "query":{"email":"nihal+test1@cabbuddies.com"}
+}
+
+###
+GET http://localhost:4000/api/v1/user/me
+Authorization: Basic {{accessToken}}
+
+###
+GET http://localhost:4000/api/v1/user/5f4bc10af0bb26189721aa57
+Authorization: Basic {{accessToken}}
