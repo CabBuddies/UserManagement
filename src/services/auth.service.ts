@@ -1,19 +1,22 @@
 import BaseService from './base.service';
-import {AuthRepository,UserRepository} from '../repositories';
+import {AuthRepository,UserRepository,RefreshTokenRepository} from '../repositories';
 import Repository from '../repositories/repository';
-import { generateAccessToken } from '../helpers/jwt.helper';
+import * as jwtHelper from '../helpers/jwt.helper';
+import Request from '../helpers/request.helper';
 import { encryptPassword, checkPassword } from '../helpers/encryption.helper';
 
 class AuthService extends BaseService {
 
     userRepository : Repository;
+    refreshTokenRepository : Repository;
 
     constructor(){
         super(new AuthRepository());
         this.userRepository = new UserRepository();
+        this.refreshTokenRepository = new RefreshTokenRepository();
     }
 
-    signUp = async(user) => {
+    signUp = async(request:Request,user) => {
         console.log(user)
         let { 
             email,
@@ -43,29 +46,45 @@ class AuthService extends BaseService {
             }
         }
 
-        try {
-            entity = await this.create(undefined,entity)
-            console.log(entity)
+        entity = await this.create(undefined,entity)
+        console.log(entity)
 
-            this.userRepository.create({
-                _id:entity._id,
-                email,
-                firstName,
-                lastName
-            });
+        this.userRepository.create({
+            _id:entity._id,
+            email,
+            firstName,
+            lastName
+        });
 
-            const accessToken = generateAccessToken({
-                _id:entity._id
-            })
-            console.log(accessToken)
-            return {accessToken}
-        } catch (error) {
-            throw error
-        }
+        const auth : jwtHelper.Auth = {
+            id:entity._id,
+            email,
+            expiryTime:0
+        };
+
+        const accessToken = jwtHelper.encodeToken(
+            auth,
+            jwtHelper.SECRET_TYPE.access,
+            jwtHelper.TIME.s30
+        );
+
+        const refreshToken = jwtHelper.encodeToken(
+            auth,
+            jwtHelper.SECRET_TYPE.refresh,
+            jwtHelper.TIME.m30
+        );
+        
+        this.refreshTokenRepository.create({
+            refreshToken,
+            userId:entity._id,
+            ip:request.getIP()
+        });
+
+        return {accessToken,refreshToken}
         
     }
 
-    signIn = async(user) => {
+    signIn = async(request:Request,user) => {
 
         let { 
             email,
@@ -88,23 +107,57 @@ class AuthService extends BaseService {
             throw this.buildError(401,"Incorrect email/password.")
         }
 
-        try {
-            user = generateAccessToken({
-                _id:user._id
-            })
-            user = {
-                accessToken : user
-            }
-            console.log(user)
-            return user
-        } catch (error) {
-            throw error
-        }
+        const auth : jwtHelper.Auth = {
+            id:user._id,
+            email,
+            expiryTime:0
+        };
+
+        const accessToken = jwtHelper.encodeToken(
+            auth,
+            jwtHelper.SECRET_TYPE.access,
+            jwtHelper.TIME.s30
+        );
+        
+        const refreshToken = jwtHelper.encodeToken(
+            auth,
+            jwtHelper.SECRET_TYPE.refresh,
+            jwtHelper.TIME.m30
+        );
+        
+        this.refreshTokenRepository.create({
+            refreshToken,
+            userId:user._id,
+            ip:request.getIP()
+        });
+
+        return {accessToken,refreshToken}
 
     }
 
-    signOut = async(userId="random") => {
+    getAccessToken = async(request:Request) => {
 
+        const auth : jwtHelper.Auth = {
+            id:request.getUserId(),
+            email:request.getEmail(),
+            expiryTime:0
+        };
+
+        const accessToken = jwtHelper.encodeToken(
+            auth,
+            jwtHelper.SECRET_TYPE.access,
+            jwtHelper.TIME.s30
+        );
+
+        return {accessToken}
+    }
+
+    signOut = async(request:Request) => {
+        await this.refreshTokenRepository.removeByRefreshToken(request.getTokenValue());
+    }
+
+    signOutAll = async(request:Request) => {
+        await this.refreshTokenRepository.removeAllByUserId(request.getUserId());
     }
 
 }

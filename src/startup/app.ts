@@ -11,5 +11,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(middleware.logger('v1'));
+app.use(middleware.requestProcessor);
 
 export default app;

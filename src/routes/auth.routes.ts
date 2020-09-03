@@ -9,7 +9,9 @@ const authController = new AuthController()
 
 router.post('/sign_up',authController.signUp)
 router.post('/sign_in',authController.signIn)
-router.delete('/sign_out',middlewares.authCheck(false),authController.signOut)
+router.get('/access_token',middlewares.authCheck(true,true),authController.getAccessToken)
+router.delete('/sign_out',middlewares.authCheck(true,true),authController.signOut)
+router.delete('/sign_out_all',middlewares.authCheck(true,true),authController.signOutAll)
 
 export { router };
 

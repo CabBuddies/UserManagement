@@ -1,11 +1,13 @@
 import authCheck from './auth.middleware';
 import testMiddleware from './test.middleware';
 import {logger} from './logger.middleware';
-import {requestCheck} from './request.middleware';
+import {ipInfoCapture} from './ip.middleware';
+import {requestProcessor} from './request.middleware';
 
 export {
     authCheck,
     testMiddleware,
     logger,
-    requestCheck
+    requestProcessor,
+    ipInfoCapture
 };

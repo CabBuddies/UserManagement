@@ -1,5 +1,6 @@
 import Service from './service';
 import Repository from '../repositories/repository';
+import Request from '../helpers/request.helper';
 
 class BaseService implements Service{
     repository : Repository;
@@ -15,7 +16,7 @@ class BaseService implements Service{
         return error;
     }
 
-    get = async(userId, entityId, attributes={}) => {
+    get = async(request:Request, entityId, attributes={}) => {
         if(!entityId){
             throw this.buildError(400,"entityId is required.");
         }
@@ -30,18 +31,18 @@ class BaseService implements Service{
         return currentEntity;
     }
 
-    getAll = async(userId, query = {}, pageSize = 5, pageNum = 1,attributes={}) => {
+    getAll = async(request:Request, query = {}, pageSize = 5, pageNum = 1,attributes={}) => {
         if(attributes){
             attributes['password']=0;
         }
         return await this.repository.getAll(query, pageSize, pageNum,attributes);
     }
 
-    create = async(userId, entity) => {
+    create = async(request:Request, entity) => {
         return await this.repository.create(entity);
     }
 
-    update = async(userId, entityId, entity) => {
+    update = async(request:Request, entityId, entity) => {
         if(!entityId){
             throw this.buildError(400,"entityId is required.");
         }
@@ -49,7 +50,7 @@ class BaseService implements Service{
         return await this.repository.update(entityId, entity);
     }
 
-    delete = async(userId, entityId) => {
+    delete = async(request:Request, entityId) => {
         if(!entityId){
             throw this.buildError(400,"entityId is required.");
         }

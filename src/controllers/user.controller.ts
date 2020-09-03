@@ -3,6 +3,7 @@ import * as express from 'express';
 import BaseController from './base.controller';
 
 import {UserService} from '../services';
+import Request from '../helpers/request.helper';
 
 class UserController extends BaseController{
     constructor(){
@@ -11,9 +12,9 @@ class UserController extends BaseController{
 
     getMe = async(req : express.Request , res : express.Response) => {
         try {
-            const userId = res.locals.jwt.user._id;
-            console.log('authToken id :',userId)
-            const result = await this.service.get(userId, userId);
+            const request : Request = res.locals.request;
+            console.log('request :',request)
+            const result = await this.service.get(request, request.getUserId());
             return res.send(result);
         } catch (error) {
             console.log(error);
@@ -23,9 +24,9 @@ class UserController extends BaseController{
 
     getId = async(req : express.Request , res : express.Response) => {
         try {
-            const userId = res.locals.jwt.user._id;
-            console.log('authToken id :',userId)
-            const result = await this.service.get(userId, userId);
+            const request : Request = res.locals.request;
+            console.log('request :',request)
+            const result = await this.service.get(request, req.params.id);
             return res.send(result);
         } catch (error) {
             console.log(error);
