@@ -3,13 +3,12 @@ import * as express from 'express';
 import Service from '../services/service';
 import {AuthService} from '../services';
 import Request from '../helpers/request.helper';
+import BaseController from './base.controller';
 
-class AuthController{
-    service : Service;
+class AuthController extends BaseController{
     
     constructor(){
-        this.service = new AuthService()
-        console.log(this.service)
+        super(new AuthService());
     }
 
     signUp = async(req : express.Request , res : express.Response) => {
@@ -28,7 +27,9 @@ class AuthController{
         const { body } = req;
         const request : Request = res.locals.request;
         try {
+            console.log(request,body);
             const creds = await this.service.signIn(request,body);
+            console.log(creds);
             return res.status(201).send(creds);
         } catch (error) {
             console.log('blah')

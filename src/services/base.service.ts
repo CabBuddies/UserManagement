@@ -2,11 +2,17 @@ import Service from './service';
 import Repository from '../repositories/repository';
 import Request from '../helpers/request.helper';
 
-class BaseService implements Service{
+import * as PubSub from './pubsub';
+
+class BaseService implements Service,PubSub.Subscriber{
     repository : Repository;
 
     constructor(repository : Repository){
         this.repository = repository;
+    }
+    
+    eventListened(event: PubSub.Event) {
+        console.log(event);
     }
 
     buildError(errorCode = 500,errorMessage = "Unknown Server Error."){
@@ -56,6 +62,10 @@ class BaseService implements Service{
         }
 
         return await this.repository.delete(entityId);
+    }
+
+    deleteAll = async(request:Request) => {
+        return await this.repository.deleteAll();
     }
 }
 export default BaseService;

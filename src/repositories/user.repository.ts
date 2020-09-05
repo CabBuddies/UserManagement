@@ -6,8 +6,8 @@ class UserRepository extends BaseRepository {
         super(User);
     }
 
-    getUsersByEmail = async(email : string) => {
-        return await this.getAll({ email },5,1)
+    getUserByEmail = async(email : string) => {
+        return await this.model.findOne({email})
     }
 
     updateUserByEmail = async(email : string,entity) => {

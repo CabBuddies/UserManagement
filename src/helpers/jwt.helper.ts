@@ -23,7 +23,7 @@ const getSecret = (type:string) => {
     switch (type.toLowerCase()) {
         case SECRET_TYPE.access:
             return config.ACCESS_TOKEN_SECRET;
-        case SECRET_TYPE.access:
+        case SECRET_TYPE.refresh:
             return config.REFRESH_TOKEN_SECRET;
         default:
             return 'none';

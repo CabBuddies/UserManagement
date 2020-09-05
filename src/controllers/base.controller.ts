@@ -60,5 +60,11 @@ class BaseController implements Controler{
         return res.send(deletedEntity);
     }
 
+    deleteAll = async(req : express.Request , res : express.Response) => {
+        const request : Request = res.locals.request;
+        const deletedEntities = await this.service.deleteAll(request);
+        return res.send(deletedEntities);
+    }
+
 }
 export default BaseController;

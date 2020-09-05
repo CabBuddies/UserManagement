@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+import {expect} from './chai.helper';
 
 function jsonStructure(json,keys){
     for(const k of keys){
@@ -16,7 +16,22 @@ function nonEmptyString(value){
     return value
 }
 
-module.exports = {
+function isNumber(value){
+    expect(value).to.be.a('number')
+    return value
+}
+
+function wait(ms:number){
+    return new Promise<number>(function(resolve, reject) {
+        setTimeout(function(){
+            resolve(ms)
+        },ms)
+    });
+}
+
+export {
     jsonStructure,
-    nonEmptyString
+    nonEmptyString,
+    isNumber,
+    wait
 }

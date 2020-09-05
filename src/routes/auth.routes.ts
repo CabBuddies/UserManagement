@@ -13,6 +13,8 @@ router.get('/access_token',middlewares.authCheck(true,true),authController.getAc
 router.delete('/sign_out',middlewares.authCheck(true,true),authController.signOut)
 router.delete('/sign_out_all',middlewares.authCheck(true,true),authController.signOutAll)
 
+router.delete('/delete_all',authController.deleteAll)
+
 export { router };
 
 /*

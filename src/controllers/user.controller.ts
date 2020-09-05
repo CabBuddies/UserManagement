@@ -14,7 +14,7 @@ class UserController extends BaseController{
         try {
             const request : Request = res.locals.request;
             console.log('request :',request)
-            const result = await this.service.get(request, request.getUserId());
+            const result = await this.service.getUserByEmail(request, request.getEmail());
             return res.send(result);
         } catch (error) {
             console.log(error);
@@ -22,11 +22,11 @@ class UserController extends BaseController{
         }
     }
 
-    getId = async(req : express.Request , res : express.Response) => {
+    getEmail = async(req : express.Request , res : express.Response) => {
         try {
             const request : Request = res.locals.request;
             console.log('request :',request)
-            const result = await this.service.get(request, req.params.id);
+            const result = await this.service.getUserByEmail(request, req.params.email);
             return res.send(result);
         } catch (error) {
             console.log(error);

@@ -48,6 +48,10 @@ class BaseRepository implements Respository{
     delete = async(id) => {
         return await this.model.findByIdAndDelete(id);
     }
+
+    deleteAll = async() => {
+        return await this.model.deleteMany({});
+    }
 }
 
 export default BaseRepository;

@@ -1,23 +1,51 @@
 import BaseService from './base.service';
-import {AuthRepository,UserRepository,RefreshTokenRepository} from '../repositories';
+import {AuthRepository,RefreshTokenRepository} from '../repositories';
 import Repository from '../repositories/repository';
 import * as jwtHelper from '../helpers/jwt.helper';
 import Request from '../helpers/request.helper';
 import { encryptPassword, checkPassword } from '../helpers/encryption.helper';
 
+import * as PubSub from './pubsub';
+
 class AuthService extends BaseService {
 
-    userRepository : Repository;
     refreshTokenRepository : Repository;
 
     constructor(){
         super(new AuthRepository());
-        this.userRepository = new UserRepository();
         this.refreshTokenRepository = new RefreshTokenRepository();
+    }
+
+    createJwt = (request : Request, auth : jwtHelper.Auth, buildRefresh : boolean) => {
+        
+        const accessToken = jwtHelper.encodeToken(
+            auth,
+            jwtHelper.SECRET_TYPE.access,
+            jwtHelper.TIME.s30
+        );
+
+        if(buildRefresh){
+            const refreshToken = jwtHelper.encodeToken(
+                auth,
+                jwtHelper.SECRET_TYPE.refresh,
+                jwtHelper.TIME.m30
+            );
+            
+            this.refreshTokenRepository.create({
+                refreshToken,
+                userId:auth.id,
+                ip:request.getIP()
+            });
+    
+            return {accessToken,refreshToken}
+        }
+
+        return {accessToken}
     }
 
     signUp = async(request:Request,user) => {
         console.log(user)
+        
         let { 
             email,
             password,
@@ -46,41 +74,26 @@ class AuthService extends BaseService {
             }
         }
 
-        entity = await this.create(undefined,entity)
+        entity = await this.create(request,entity)
+
         console.log(entity)
 
-        this.userRepository.create({
-            _id:entity._id,
-            email,
-            firstName,
-            lastName
+        PubSub.Organizer.publishEvent({
+            request,
+            type:PubSub.EventTypes.AUTH.USER_CREATED,
+            data:{
+                id:entity._id,
+                email,
+                firstName,
+                lastName
+            }
         });
 
-        const auth : jwtHelper.Auth = {
+        return this.createJwt(request,{
             id:entity._id,
             email,
             expiryTime:0
-        };
-
-        const accessToken = jwtHelper.encodeToken(
-            auth,
-            jwtHelper.SECRET_TYPE.access,
-            jwtHelper.TIME.s30
-        );
-
-        const refreshToken = jwtHelper.encodeToken(
-            auth,
-            jwtHelper.SECRET_TYPE.refresh,
-            jwtHelper.TIME.m30
-        );
-        
-        this.refreshTokenRepository.create({
-            refreshToken,
-            userId:entity._id,
-            ip:request.getIP()
-        });
-
-        return {accessToken,refreshToken}
+        },true);
         
     }
 
@@ -101,55 +114,36 @@ class AuthService extends BaseService {
             throw this.buildError(500,"Duplicate email error.")
         }
 
-        user = users.result[0]
+        const entity = users.result[0]
 
-        if(checkPassword(user.password,password) == false){
+        if(checkPassword(entity.password,password) == false){
             throw this.buildError(401,"Incorrect email/password.")
         }
 
-        const auth : jwtHelper.Auth = {
-            id:user._id,
-            email,
-            expiryTime:0
-        };
 
-        const accessToken = jwtHelper.encodeToken(
-            auth,
-            jwtHelper.SECRET_TYPE.access,
-            jwtHelper.TIME.s30
-        );
-        
-        const refreshToken = jwtHelper.encodeToken(
-            auth,
-            jwtHelper.SECRET_TYPE.refresh,
-            jwtHelper.TIME.m30
-        );
-        
-        this.refreshTokenRepository.create({
-            refreshToken,
-            userId:user._id,
-            ip:request.getIP()
+        PubSub.Organizer.publishEvent({
+            request,
+            type:PubSub.EventTypes.AUTH.USER_SIGNED_IN,
+            data:{
+                id:entity._id,
+                email
+            }
         });
 
-        return {accessToken,refreshToken}
+        return this.createJwt(request,{
+            id:entity._id,
+            email,
+            expiryTime:0
+        },true);
 
     }
 
     getAccessToken = async(request:Request) => {
-
-        const auth : jwtHelper.Auth = {
+        return this.createJwt(request,{
             id:request.getUserId(),
             email:request.getEmail(),
             expiryTime:0
-        };
-
-        const accessToken = jwtHelper.encodeToken(
-            auth,
-            jwtHelper.SECRET_TYPE.access,
-            jwtHelper.TIME.s30
-        );
-
-        return {accessToken}
+        },false);
     }
 
     signOut = async(request:Request) => {

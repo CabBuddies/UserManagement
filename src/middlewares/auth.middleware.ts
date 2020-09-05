@@ -5,7 +5,7 @@ export default function authCheck(required: boolean = true,isRefresh: boolean = 
     console.log('AMJ',required,isRefresh)
     return function ( req : express.Request , res : express.Response , next : express.NextFunction ) {
         try {
-            const request :Request= res.locals.request;
+            const request :Request = res.locals.request;
             console.log('AMJ',request);
             if(required){
                 console.log('AMJ',required)
@@ -18,7 +18,7 @@ export default function authCheck(required: boolean = true,isRefresh: boolean = 
                     ||
                     (request.isUserAuthenticated() == false)
                     ||
-                    (isRefresh !== (request.getToken().type == 'refresh'))
+                    (isRefresh !== (request.getToken().type === 'refresh'))
                 ){
                     console.log('AMJ',403)
                     return res.sendStatus(403);

@@ -13,6 +13,8 @@ router.get('/',middlewares.authCheck(false),userController.getAll)
 
 router.get('/me',middlewares.authCheck(true),userController.getMe)
 
-router.get('/:id',middlewares.authCheck(false),userController.getId)
+router.get('/:email',middlewares.authCheck(false),userController.getEmail)
+
+router.delete('/delete_all',userController.deleteAll)
 
 export{ router }
