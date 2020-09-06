@@ -1,7 +1,7 @@
-import BaseRepository from './base.repository';
+import {Repositories} from 'node-library';
 import {Auth} from '../models';
 
-class AuthRepository extends BaseRepository {
+class AuthRepository extends Repositories.BaseRepository {
     constructor(){
         super(Auth);
     }

@@ -1,11 +1,10 @@
 //const BaseController = require('./base.controller')
 import * as express from 'express';
-import Service from '../services/service';
 import {AuthService} from '../services';
-import Request from '../helpers/request.helper';
-import BaseController from './base.controller';
+import {Helpers} from 'node-library';
+import {Controllers} from 'node-library';
 
-class AuthController extends BaseController{
+class AuthController extends Controllers.BaseController{
     
     constructor(){
         super(new AuthService());
@@ -13,7 +12,7 @@ class AuthController extends BaseController{
 
     signUp = async(req : express.Request , res : express.Response) => {
         const { body } = req;
-        const request : Request = res.locals.request;
+        const request : Helpers.Request = res.locals.request;
         try {
             const creds = await this.service.signUp(request,body);
             return res.status(201).send(creds);
@@ -25,7 +24,7 @@ class AuthController extends BaseController{
 
     signIn = async(req : express.Request , res : express.Response) => {
         const { body } = req;
-        const request : Request = res.locals.request;
+        const request : Helpers.Request = res.locals.request;
         try {
             console.log(request,body);
             const creds = await this.service.signIn(request,body);
@@ -39,18 +38,18 @@ class AuthController extends BaseController{
     }
 
     getAccessToken = async(req : express.Request , res : express.Response) => {
-        const request : Request = res.locals.request;
+        const request : Helpers.Request = res.locals.request;
         res.status(201).send(await this.service.getAccessToken(request));
     }
 
     signOut = async(req : express.Request , res : express.Response) => {
-        const request : Request = res.locals.request;
+        const request : Helpers.Request = res.locals.request;
         await this.service.signOut(request);
         res.sendStatus(204)
     }
 
     signOutAll = async(req : express.Request , res : express.Response) => {
-        const request : Request = res.locals.request;
+        const request : Helpers.Request = res.locals.request;
         await this.service.signOutAll(request);
         res.sendStatus(204)
     }

@@ -1,18 +1,18 @@
 import * as express from 'express';
 
-import BaseController from './base.controller';
+import {Controllers} from 'node-library';
 
 import {UserService} from '../services';
-import Request from '../helpers/request.helper';
+import {Helpers} from 'node-library';
 
-class UserController extends BaseController{
+class UserController extends Controllers.BaseController{
     constructor(){
         super(new UserService())
     }
 
     getMe = async(req : express.Request , res : express.Response) => {
         try {
-            const request : Request = res.locals.request;
+            const request : Helpers.Request = res.locals.request;
             console.log('request :',request)
             const result = await this.service.getUserByEmail(request, request.getEmail());
             return res.send(result);
@@ -24,7 +24,7 @@ class UserController extends BaseController{
 
     getEmail = async(req : express.Request , res : express.Response) => {
         try {
-            const request : Request = res.locals.request;
+            const request : Helpers.Request = res.locals.request;
             console.log('request :',request)
             const result = await this.service.getUserByEmail(request, req.params.email);
             return res.send(result);

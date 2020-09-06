@@ -1,34 +1,29 @@
-import BaseService from './base.service';
 import {AuthRepository,RefreshTokenRepository} from '../repositories';
-import Repository from '../repositories/repository';
-import * as jwtHelper from '../helpers/jwt.helper';
-import Request from '../helpers/request.helper';
-import { encryptPassword, checkPassword } from '../helpers/encryption.helper';
+import {Helpers,Repositories,Services} from 'node-library';
+import {PubSubEventTypes} from '../helpers/pubsub.helper';
 
-import * as PubSub from './pubsub';
+class AuthService extends Services.BaseService {
 
-class AuthService extends BaseService {
-
-    refreshTokenRepository : Repository;
+    refreshTokenRepository : Repositories.Repository;
 
     constructor(){
         super(new AuthRepository());
         this.refreshTokenRepository = new RefreshTokenRepository();
     }
 
-    createJwt = (request : Request, auth : jwtHelper.Auth, buildRefresh : boolean) => {
+    createJwt = (request : Helpers.Request, auth : Helpers.JWT.Auth, buildRefresh : boolean) => {
         
-        const accessToken = jwtHelper.encodeToken(
+        const accessToken = Helpers.JWT.encodeToken(
             auth,
-            jwtHelper.SECRET_TYPE.access,
-            jwtHelper.TIME.s30
+            Helpers.JWT.SECRET_TYPE.access,
+            Helpers.JWT.TIME.s30
         );
 
         if(buildRefresh){
-            const refreshToken = jwtHelper.encodeToken(
+            const refreshToken = Helpers.JWT.encodeToken(
                 auth,
-                jwtHelper.SECRET_TYPE.refresh,
-                jwtHelper.TIME.m30
+                Helpers.JWT.SECRET_TYPE.refresh,
+                Helpers.JWT.TIME.m30
             );
             
             this.refreshTokenRepository.create({
@@ -43,7 +38,7 @@ class AuthService extends BaseService {
         return {accessToken}
     }
 
-    signUp = async(request:Request,user) => {
+    signUp = async(request:Helpers.Request,user) => {
         console.log(user)
         
         let { 
@@ -64,7 +59,7 @@ class AuthService extends BaseService {
             throw this.buildError(400,"A User has already registered with the email address.");
         }
 
-        password = encryptPassword(password)
+        password = Helpers.Encryption.encryptPassword(password)
 
         let entity :any = {
             email,
@@ -78,9 +73,9 @@ class AuthService extends BaseService {
 
         console.log(entity)
 
-        PubSub.Organizer.publishEvent({
+        Services.PubSub.Organizer.publishEvent({
             request,
-            type:PubSub.EventTypes.AUTH.USER_CREATED,
+            type:PubSubEventTypes.AUTH.USER_CREATED,
             data:{
                 id:entity._id,
                 email,
@@ -97,7 +92,7 @@ class AuthService extends BaseService {
         
     }
 
-    signIn = async(request:Request,user) => {
+    signIn = async(request:Helpers.Request,user) => {
 
         let { 
             email,
@@ -116,14 +111,14 @@ class AuthService extends BaseService {
 
         const entity = users.result[0]
 
-        if(checkPassword(entity.password,password) == false){
+        if(Helpers.Encryption.checkPassword(entity.password,password) == false){
             throw this.buildError(401,"Incorrect email/password.")
         }
 
 
-        PubSub.Organizer.publishEvent({
+        Services.PubSub.Organizer.publishEvent({
             request,
-            type:PubSub.EventTypes.AUTH.USER_SIGNED_IN,
+            type:PubSubEventTypes.AUTH.USER_SIGNED_IN,
             data:{
                 id:entity._id,
                 email
@@ -138,7 +133,7 @@ class AuthService extends BaseService {
 
     }
 
-    getAccessToken = async(request:Request) => {
+    getAccessToken = async(request:Helpers.Request) => {
         return this.createJwt(request,{
             id:request.getUserId(),
             email:request.getEmail(),
@@ -146,11 +141,11 @@ class AuthService extends BaseService {
         },false);
     }
 
-    signOut = async(request:Request) => {
+    signOut = async(request:Helpers.Request) => {
         await this.refreshTokenRepository.removeByRefreshToken(request.getTokenValue());
     }
 
-    signOutAll = async(request:Request) => {
+    signOutAll = async(request:Helpers.Request) => {
         await this.refreshTokenRepository.removeAllByUserId(request.getUserId());
     }
 

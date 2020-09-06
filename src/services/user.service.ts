@@ -1,19 +1,17 @@
-import BaseService from './base.service';
 import {UserRepository} from '../repositories';
-import Request from '../helpers/request.helper';
+import {Services,Helpers} from 'node-library';
+import {PubSubEventTypes} from '../helpers/pubsub.helper';
 
-import * as PubSub from './pubsub';
-
-class UserService extends BaseService {
+class UserService extends Services.BaseService {
     constructor(){
         super(new UserRepository());
-        PubSub.Organizer.addSubscriber(PubSub.EventTypes.AUTH.USER_CREATED,this)
+        Services.PubSub.Organizer.addSubscriber(PubSubEventTypes.AUTH.USER_CREATED,this)
     }
 
-    eventListened(event: PubSub.Event) {
+    eventListened(event: Services.PubSub.Event) {
         console.log('UserService',event);
         switch (event.type) {
-            case PubSub.EventTypes.AUTH.USER_CREATED:
+            case PubSubEventTypes.AUTH.USER_CREATED:
                 this.userCreated(event);
                 break;
         
@@ -22,7 +20,7 @@ class UserService extends BaseService {
         }
     }
 
-    userCreated(event: PubSub.Event) {
+    userCreated(event: Services.PubSub.Event) {
 
         const {
             email,
@@ -38,7 +36,7 @@ class UserService extends BaseService {
 
     }
 
-    getUserByEmail = async(request:Request,email) => {
+    getUserByEmail = async(request:Helpers.Request,email) => {
         return await this.repository.getUserByEmail(email);
     }
 }

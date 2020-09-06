@@ -1,7 +1,7 @@
-import BaseRepository from './base.repository';
+import {Repositories} from 'node-library';
 import {RefreshToken} from '../models';
 
-class RefreshTokenRepository extends BaseRepository {
+class RefreshTokenRepository extends Repositories.BaseRepository {
     constructor(){
         super(RefreshToken);
     }
