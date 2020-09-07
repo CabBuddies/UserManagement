@@ -23,7 +23,7 @@ class AuthController extends node_library_1.Controllers.BaseController {
             }
             catch (error) {
                 console.log(error);
-                return res.status(error.status).send(error);
+                return res.status(error.status).send(error.message);
             }
         });
         this.signIn = (req, res) => __awaiter(this, void 0, void 0, function* () {
@@ -37,8 +37,8 @@ class AuthController extends node_library_1.Controllers.BaseController {
             }
             catch (error) {
                 console.log('blah');
-                console.log(error);
-                return res.status(error.status).send(error);
+                console.log('signIn auth controller', error);
+                return res.status(error.status).send(error.message);
             }
         });
         this.getAccessToken = (req, res) => __awaiter(this, void 0, void 0, function* () {

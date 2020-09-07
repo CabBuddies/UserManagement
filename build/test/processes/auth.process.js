@@ -52,7 +52,10 @@ function signIn(data) {
             common.nonEmptyString(response.data.refreshToken.value);
         }
         else if (response.status === 401) {
-            common.nonEmptyString(response.data.message);
+            common.nonEmptyString(response.data);
+        }
+        else if (response.status === 404) {
+            common.nonEmptyString(response.data);
         }
         return response.data || {};
     });

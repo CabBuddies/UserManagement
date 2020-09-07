@@ -18,7 +18,7 @@ class AuthController extends Controllers.BaseController{
             return res.status(201).send(creds);
         } catch (error) {
             console.log(error)
-            return res.status(error.status).send(error);
+            return res.status(error.status).send(error.message);
         }
     }
 
@@ -32,8 +32,8 @@ class AuthController extends Controllers.BaseController{
             return res.status(201).send(creds);
         } catch (error) {
             console.log('blah')
-            console.log(error)
-            return res.status(error.status).send(error);
+            console.log('signIn auth controller',error)
+            return res.status(error.status).send(error.message);
         }
     }
 
