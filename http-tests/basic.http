@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
     "email":"nihal+test1@cabbuddies.com",
-    "password":"strong"
+    "password":"weak"
 }
 
 ###

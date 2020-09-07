@@ -15,10 +15,12 @@ const config_helper_1 = require("../helpers/config.helper");
 var expect = node_library_1.Test.Chai.expect;
 var request = node_library_1.Test.Request;
 var common = node_library_1.Test.Common;
+const baseUrl = config_helper_1.default.HOST + config_helper_1.default.API_BASE;
 function me(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.responseStatus = data.responseStatus || 200;
         let response = yield request.formattedApiRequest({
+            host: baseUrl,
             method: 'get',
             path: config_helper_1.default.PATH.PROFILE.ME,
             token: {
@@ -36,6 +38,7 @@ function email(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.responseStatus = data.responseStatus || 200;
         const req = {
+            host: baseUrl,
             method: 'get',
             path: config_helper_1.default.PATH.PROFILE.EMAIL,
             params: {

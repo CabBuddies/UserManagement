@@ -28,7 +28,7 @@ describe('Auth', function () {
                     responseStatus: 201
                 });
                 console.debug(response);
-                const accessToken = common.jsonStructure(response, ['accessToken']);
+                const accessToken = common.jsonStructure(response, ['accessToken', 'value']);
             });
         });
     });

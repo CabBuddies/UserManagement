@@ -12,7 +12,7 @@ describe('Auth',()=>{
             console.debug(data);
         });
 
-        it('with bad credentials', async function () {
+        it('with bad password', async function () {
             const data = await auth.signIn({
                 email:"nihal+test1@cabbuddies.com",
                 password:"weak",
@@ -22,7 +22,17 @@ describe('Auth',()=>{
             console.debug(data);
         });
 
-        it('with bad credentials', async function () {
+        it('with bad email', async function () {
+            const data = await auth.signIn({
+                email:"test1000@cabbuddies.com",
+                password:"strong",
+                responseStatus:404
+            });
+
+            console.debug(data);
+        });
+
+        it('with bad(empty) password', async function () {
             const data = await auth.signIn({
                 email:"nihal+test1@cabbuddies.com",
                 password:"",

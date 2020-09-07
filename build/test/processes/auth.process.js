@@ -15,13 +15,15 @@ const config_helper_1 = require("../helpers/config.helper");
 var expect = node_library_1.Test.Chai.expect;
 var request = node_library_1.Test.Request;
 var common = node_library_1.Test.Common;
+const baseUrl = config_helper_1.default.HOST + config_helper_1.default.API_BASE;
 function signUp(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.registrationType = data.registrationType || 'InApp';
         data.responseStatus = data.responseStatus || 201;
         let response = yield request.formattedApiRequest({
+            host: baseUrl,
             method: 'post',
-            path: config_helper_1.default.PATH.AUTH.SIGN_UP,
+            url: baseUrl + config_helper_1.default.PATH.AUTH.SIGN_UP,
             data
         });
         console.log(response);
@@ -38,6 +40,7 @@ function signIn(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.responseStatus = data.responseStatus || 201;
         let response = yield request.formattedApiRequest({
+            host: baseUrl,
             method: 'post',
             path: config_helper_1.default.PATH.AUTH.SIGN_IN,
             data
@@ -48,6 +51,9 @@ function signIn(data) {
             common.nonEmptyString(response.data.accessToken.value);
             common.nonEmptyString(response.data.refreshToken.value);
         }
+        else if (response.status === 401) {
+            common.nonEmptyString(response.data.message);
+        }
         return response.data || {};
     });
 }
@@ -56,6 +62,7 @@ function signOut(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.responseStatus = data.responseStatus || 204;
         let response = yield request.formattedApiRequest({
+            host: baseUrl,
             method: 'delete',
             path: config_helper_1.default.PATH.AUTH.SIGN_OUT,
             token: {
@@ -73,6 +80,7 @@ function signOutAll(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.responseStatus = data.responseStatus || 204;
         let response = yield request.formattedApiRequest({
+            host: baseUrl,
             method: 'delete',
             path: config_helper_1.default.PATH.AUTH.SIGN_OUT_ALL,
             token: {
@@ -90,6 +98,7 @@ function getAccessToken(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.responseStatus = data.responseStatus || 201;
         let response = yield request.formattedApiRequest({
+            host: baseUrl,
             method: 'get',
             path: config_helper_1.default.PATH.AUTH.GET_ACCESS_TOKEN,
             token: {

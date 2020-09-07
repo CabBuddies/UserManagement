@@ -62,6 +62,8 @@ async function signIn(data:SignInPacket){
     if(response.status === 201){
         common.nonEmptyString(response.data.accessToken.value)
         common.nonEmptyString(response.data.refreshToken.value)
+    } else if(response.status === 401) {
+        common.nonEmptyString(response.data.message)
     }
 
     return response.data || {}
