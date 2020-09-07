@@ -11,5 +11,25 @@ describe('Auth',()=>{
 
             console.debug(data);
         });
+
+        it('with bad credentials', async function () {
+            const data = await auth.signIn({
+                email:"nihal+test1@cabbuddies.com",
+                password:"weak",
+                responseStatus:401
+            });
+
+            console.debug(data);
+        });
+
+        it('with bad credentials', async function () {
+            const data = await auth.signIn({
+                email:"nihal+test1@cabbuddies.com",
+                password:"weak",
+                responseStatus:401
+            });
+
+            console.debug(data);
+        });
     })
 })

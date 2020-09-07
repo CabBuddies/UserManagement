@@ -25,7 +25,7 @@ describe('Auth', function () {
 
             console.debug(response);
 
-            const accessToken = common.jsonStructure(response,['accessToken']);
+            const accessToken = common.jsonStructure(response,['accessToken','value']);
 
         });
     });
