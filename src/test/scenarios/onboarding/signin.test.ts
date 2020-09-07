@@ -25,7 +25,7 @@ describe('Auth',()=>{
         it('with bad credentials', async function () {
             const data = await auth.signIn({
                 email:"nihal+test1@cabbuddies.com",
-                password:"weak",
+                password:"",
                 responseStatus:401
             });
 

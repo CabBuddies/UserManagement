@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsc --build",
     "start": "nodemon -x ts-node ./src/index.ts",
     "test": "mocha -r ts-node/register src/test/**/*.test.ts --timeout 60000"
   },
