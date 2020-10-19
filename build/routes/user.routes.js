@@ -7,8 +7,25 @@ const controllers_1 = require("../controllers");
 const router = express_1.Router();
 exports.router = router;
 const userController = new controllers_1.UserController();
-//router.post('/',LoggerMiddleware('v1'),userController.create)
+const validatorMiddleware = new node_library_1.Middlewares.ValidatorMiddleware();
+const schema = {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["firstName", "lastName", "displayPicture"],
+    "properties": {
+        "firstName": {
+            "type": "string"
+        },
+        "lastName": {
+            "type": "string"
+        },
+        "displayPicture": {
+            "type": "string"
+        }
+    }
+};
 router.get('/', node_library_1.Middlewares.authCheck(false), userController.getAll);
+router.put('/', node_library_1.Middlewares.authCheck(true), validatorMiddleware.validateRequestBody(schema), userController.update);
 router.get('/me', node_library_1.Middlewares.authCheck(true), userController.getMe);
-router.get('/:email', node_library_1.Middlewares.authCheck(false), userController.getEmail);
+router.get('/:id', node_library_1.Middlewares.authCheck(false), userController.getId);
 router.delete('/delete_all', userController.deleteAll);

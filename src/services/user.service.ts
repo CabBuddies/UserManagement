@@ -1,18 +1,29 @@
 import {UserRepository} from '../repositories';
 import {Services,Helpers} from 'node-library';
-import {PubSubEventTypes} from '../helpers/pubsub.helper';
+import {PubSubMessageTypes} from '../helpers/pubsub.helper';
 
-class UserService extends Services.BaseService {
-    constructor(){
-        super(new UserRepository());
-        Services.PubSub.Organizer.addSubscriber(PubSubEventTypes.AUTH.USER_CREATED,this)
+class UserService extends Services.BaseService{
+
+    private static instance: UserService;
+    
+    public static getInstance(): UserService {
+        if (!UserService.instance) {
+            UserService.instance = new UserService();
+        }
+
+        return UserService.instance;
     }
 
-    eventListened(event: Services.PubSub.Event) {
-        console.log('UserService',event);
-        switch (event.type) {
-            case PubSubEventTypes.AUTH.USER_CREATED:
-                this.userCreated(event);
+    private constructor(){
+        super(new UserRepository());
+        Services.PubSub.Organizer.addSubscriber(PubSubMessageTypes.AUTH.USER_SIGNED_UP,this)
+    }
+
+    processMessage(message: Services.PubSub.Message){
+        console.log('UserService',message);
+        switch (message.type) {
+            case PubSubMessageTypes.AUTH.USER_SIGNED_UP:
+                this.userCreated(message);
                 break;
         
             default:
@@ -20,15 +31,17 @@ class UserService extends Services.BaseService {
         }
     }
 
-    userCreated(event: Services.PubSub.Event) {
+    userCreated(event: Services.PubSub.Message) {
 
         const {
+            userId,
             email,
             firstName,
             lastName
         } = event.data;
         
         this.create(event.request,{
+            userId,
             email,
             firstName,
             lastName
@@ -39,6 +52,26 @@ class UserService extends Services.BaseService {
     getUserByEmail = async(request:Helpers.Request,email) => {
         return await this.repository.getUserByEmail(email);
     }
+
+    getUserByUserId = async(request:Helpers.Request,userId) => {
+        return await this.repository.getUserByUserId(userId);
+    }
+
+    getAll = async(request:Helpers.Request, query = {}, sort = {}, pageSize:number = 5, pageNum:number = 1, attributes:string[] = []) => {
+        const exposableAttributes = ['userId','email','firstName','lastName','displayPicture'];
+        if(attributes.length === 0)
+            attributes = exposableAttributes;
+        else
+            attributes = attributes.filter( function( el:string ) {
+                return exposableAttributes.includes( el );
+            });
+        return this.repository.getAll(query,sort,pageSize,pageNum,attributes);
+    }
+
+    update = async(request:Helpers.Request, entityId, body) =>{
+        delete body._id;
+        return await this.repository.updateUserByUserId(request.getUserId(),Helpers.JSON.normalizeJson(body));
+    }
 }
 
-export default UserService;
+export default UserService.getInstance();

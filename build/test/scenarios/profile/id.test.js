@@ -9,14 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const profile = require("../../processes/profile.process");
 const node_library_1 = require("node-library");
-const models_1 = require("../models");
-class AuthRepository extends node_library_1.Repositories.BaseRepository {
-    constructor() {
-        super(models_1.Auth);
-        this.getUsersByEmail = (email) => __awaiter(this, void 0, void 0, function* () {
-            return yield this.getAll({ email }, {}, 5, 1, []);
+var expect = node_library_1.Test.Chai.expect;
+describe('Profile', () => {
+    describe('Id', () => {
+        it('anonymous', function () {
+            return __awaiter(this, void 0, void 0, function* () {
+                let response = yield profile.getAll({
+                    responseStatus: 200
+                });
+                console.log(response);
+                const id = response.result[0].userId;
+                response = yield profile.id({
+                    id,
+                    responseStatus: 200
+                });
+                console.log(response);
+                expect(response.userId).to.be.equal(id);
+            });
         });
-    }
-}
-exports.default = AuthRepository;
+    });
+});

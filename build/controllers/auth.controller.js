@@ -13,7 +13,7 @@ const services_1 = require("../services");
 const node_library_1 = require("node-library");
 class AuthController extends node_library_1.Controllers.BaseController {
     constructor() {
-        super(new services_1.AuthService());
+        super(services_1.AuthService);
         this.signUp = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const { body } = req;
             const request = res.locals.request;

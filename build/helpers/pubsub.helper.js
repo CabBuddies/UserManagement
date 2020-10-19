@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PubSubEventTypes = void 0;
-const PubSubEventTypes = {
+exports.PubSubMessageTypes = void 0;
+const PubSubMessageTypes = {
     AUTH: {
-        USER_CREATED: "AUTH_USER_CREATED",
+        USER_SIGNED_UP: "AUTH_USER_SIGNED_UP",
         USER_SIGNED_IN: "AUTH_USER_SIGNED_IN",
-        SIGN_OUT: "AUTH_SIGN_OUT",
-        SIGN_OUT_ALL: "AUTH_SIGN_OUT_ALL",
+        USER_SIGN_OUT: "AUTH_USER_SIGN_OUT",
+        USER_SIGN_OUT_ALL: "AUTH_USER_SIGN_OUT_ALL",
         ACCESS_TOKEN: "AUTH_ACCESS_TOKEN"
-    }
+    },
 };
-exports.PubSubEventTypes = PubSubEventTypes;
+exports.PubSubMessageTypes = PubSubMessageTypes;

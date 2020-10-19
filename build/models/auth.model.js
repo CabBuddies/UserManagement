@@ -17,8 +17,8 @@ const authSchema = new mongoose.Schema({
     account: {
         type: {
             type: String,
-            enum: ['InApp', 'Google', 'Facebook', 'Twitter', 'LinkedIn'],
-            default: 'InApp'
+            enum: ['inapp', 'google', 'facebook', 'twitter', 'linkedin'],
+            default: 'inapp'
         },
         registeredAt: {
             type: Date,

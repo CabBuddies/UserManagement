@@ -7,7 +7,7 @@ import {Helpers} from 'node-library';
 
 class UserController extends Controllers.BaseController{
     constructor(){
-        super(new UserService())
+        super(UserService);
     }
 
     getMe = async(req : express.Request , res : express.Response) => {
@@ -22,11 +22,11 @@ class UserController extends Controllers.BaseController{
         }
     }
 
-    getEmail = async(req : express.Request , res : express.Response) => {
+    getId = async(req : express.Request , res : express.Response) => {
         try {
             const request : Helpers.Request = res.locals.request;
             console.log('request :',request)
-            const result = await this.service.getUserByEmail(request, req.params.email);
+            const result = await this.service.getUserByUserId(request, req.params.id);
             return res.send(result);
         } catch (error) {
             console.log(error);

@@ -7,13 +7,32 @@ const router = Router()
 
 const userController = new UserController()
 
-//router.post('/',LoggerMiddleware('v1'),userController.create)
+const validatorMiddleware = new Middlewares.ValidatorMiddleware();
+
+const schema = {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["firstName","lastName","displayPicture"],
+    "properties": {
+        "firstName":{
+            "type":"string"
+        },
+        "lastName":{
+            "type":"string"
+        },
+        "displayPicture":{
+            "type":"string"
+        }
+    }
+};
 
 router.get('/',Middlewares.authCheck(false),userController.getAll)
 
+router.put('/',Middlewares.authCheck(true),validatorMiddleware.validateRequestBody(schema),userController.update)
+
 router.get('/me',Middlewares.authCheck(true),userController.getMe)
 
-router.get('/:email',Middlewares.authCheck(false),userController.getEmail)
+router.get('/:id',Middlewares.authCheck(false),userController.getId)
 
 router.delete('/delete_all',userController.deleteAll)
 

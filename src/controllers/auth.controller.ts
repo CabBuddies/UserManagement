@@ -7,7 +7,7 @@ import {Controllers} from 'node-library';
 class AuthController extends Controllers.BaseController{
     
     constructor(){
-        super(new AuthService());
+        super(AuthService);
     }
 
     signUp = async(req : express.Request , res : express.Response) => {

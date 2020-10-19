@@ -13,7 +13,8 @@ const config = {
         },
         PROFILE: {
             ME: '/user/me',
-            EMAIL: '/user/:email'
+            GET_ALL: '/user',
+            ID: '/user/:id'
         }
     }
 };

@@ -13,7 +13,7 @@ const node_library_1 = require("node-library");
 const services_1 = require("../services");
 class UserController extends node_library_1.Controllers.BaseController {
     constructor() {
-        super(new services_1.UserService());
+        super(services_1.UserService);
         this.getMe = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const request = res.locals.request;
@@ -26,11 +26,11 @@ class UserController extends node_library_1.Controllers.BaseController {
                 res.sendStatus(error.status);
             }
         });
-        this.getEmail = (req, res) => __awaiter(this, void 0, void 0, function* () {
+        this.getId = (req, res) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const request = res.locals.request;
                 console.log('request :', request);
-                const result = yield this.service.getUserByEmail(request, req.params.email);
+                const result = yield this.service.getUserByUserId(request, req.params.id);
                 return res.send(result);
             }
             catch (error) {

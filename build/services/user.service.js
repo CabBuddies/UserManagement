@@ -18,25 +18,49 @@ class UserService extends node_library_1.Services.BaseService {
         this.getUserByEmail = (request, email) => __awaiter(this, void 0, void 0, function* () {
             return yield this.repository.getUserByEmail(email);
         });
-        node_library_1.Services.PubSub.Organizer.addSubscriber(pubsub_helper_1.PubSubEventTypes.AUTH.USER_CREATED, this);
+        this.getUserByUserId = (request, userId) => __awaiter(this, void 0, void 0, function* () {
+            return yield this.repository.getUserByUserId(userId);
+        });
+        this.getAll = (request, query = {}, sort = {}, pageSize = 5, pageNum = 1, attributes = []) => __awaiter(this, void 0, void 0, function* () {
+            const exposableAttributes = ['userId', 'email', 'firstName', 'lastName', 'displayPicture'];
+            if (attributes.length === 0)
+                attributes = exposableAttributes;
+            else
+                attributes = attributes.filter(function (el) {
+                    return exposableAttributes.includes(el);
+                });
+            return this.repository.getAll(query, sort, pageSize, pageNum, attributes);
+        });
+        this.update = (request, entityId, body) => __awaiter(this, void 0, void 0, function* () {
+            delete body._id;
+            return yield this.repository.updateUserByUserId(request.getUserId(), node_library_1.Helpers.JSON.normalizeJson(body));
+        });
+        node_library_1.Services.PubSub.Organizer.addSubscriber(pubsub_helper_1.PubSubMessageTypes.AUTH.USER_SIGNED_UP, this);
     }
-    eventListened(event) {
-        console.log('UserService', event);
-        switch (event.type) {
-            case pubsub_helper_1.PubSubEventTypes.AUTH.USER_CREATED:
-                this.userCreated(event);
+    static getInstance() {
+        if (!UserService.instance) {
+            UserService.instance = new UserService();
+        }
+        return UserService.instance;
+    }
+    processMessage(message) {
+        console.log('UserService', message);
+        switch (message.type) {
+            case pubsub_helper_1.PubSubMessageTypes.AUTH.USER_SIGNED_UP:
+                this.userCreated(message);
                 break;
             default:
                 break;
         }
     }
     userCreated(event) {
-        const { email, firstName, lastName } = event.data;
+        const { userId, email, firstName, lastName } = event.data;
         this.create(event.request, {
+            userId,
             email,
             firstName,
             lastName
         });
     }
 }
-exports.default = UserService;
+exports.default = UserService.getInstance();

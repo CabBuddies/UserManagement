@@ -40,15 +40,48 @@ interface OptionalAccessPacket{
     responseStatus?:number
 }
 
-async function email(data : OptionalAccessPacket){
+async function getAll(data : OptionalAccessPacket){
     data.responseStatus = data.responseStatus||200;
 
     const req : any = {
         host:baseUrl,
         method:'get',
-        path:config.PATH.PROFILE.EMAIL,
+        path:config.PATH.PROFILE.GET_ALL
+    };
+
+    if(data.accessToken){
+        req.token = {
+            type:'access',
+            value:data.accessToken
+        };
+    }
+
+    if(data.query){
+        req.query = data.query;
+    }
+
+    if(data.body){
+        req.body = data.body;
+    }
+
+    let response = await request.formattedApiRequest(req);
+    
+    console.log(response)
+    
+    expect(response.status).to.equal(data.responseStatus)
+
+    return response.data || {}
+}
+
+async function id(data : OptionalAccessPacket){
+    data.responseStatus = data.responseStatus||200;
+
+    const req : any = {
+        host:baseUrl,
+        method:'get',
+        path:config.PATH.PROFILE.ID,
         params:{
-            email:data.email
+            id:data.id
         }
     };
 
@@ -69,6 +102,7 @@ async function email(data : OptionalAccessPacket){
 }
 
 export {
-    email,
+    getAll,
+    id,
     me
 }

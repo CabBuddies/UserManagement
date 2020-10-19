@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.me = exports.email = void 0;
+exports.me = exports.id = exports.getAll = void 0;
 const node_library_1 = require("node-library");
 const config_helper_1 = require("../helpers/config.helper");
 var expect = node_library_1.Test.Chai.expect;
@@ -34,15 +34,42 @@ function me(data) {
     });
 }
 exports.me = me;
-function email(data) {
+function getAll(data) {
     return __awaiter(this, void 0, void 0, function* () {
         data.responseStatus = data.responseStatus || 200;
         const req = {
             host: baseUrl,
             method: 'get',
-            path: config_helper_1.default.PATH.PROFILE.EMAIL,
+            path: config_helper_1.default.PATH.PROFILE.GET_ALL
+        };
+        if (data.accessToken) {
+            req.token = {
+                type: 'access',
+                value: data.accessToken
+            };
+        }
+        if (data.query) {
+            req.query = data.query;
+        }
+        if (data.body) {
+            req.body = data.body;
+        }
+        let response = yield request.formattedApiRequest(req);
+        console.log(response);
+        expect(response.status).to.equal(data.responseStatus);
+        return response.data || {};
+    });
+}
+exports.getAll = getAll;
+function id(data) {
+    return __awaiter(this, void 0, void 0, function* () {
+        data.responseStatus = data.responseStatus || 200;
+        const req = {
+            host: baseUrl,
+            method: 'get',
+            path: config_helper_1.default.PATH.PROFILE.ID,
             params: {
-                email: data.email
+                id: data.id
             }
         };
         if (data.accessToken) {
@@ -57,4 +84,4 @@ function email(data) {
         return response.data || {};
     });
 }
-exports.email = email;
+exports.id = id;

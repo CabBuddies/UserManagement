@@ -1,14 +1,21 @@
-import {AuthRepository,RefreshTokenRepository} from '../repositories';
+import {AuthRepository} from '../repositories';
 import {Helpers,Repositories,Services} from 'node-library';
-import {PubSubEventTypes} from '../helpers/pubsub.helper';
+import {PubSubMessageTypes} from '../helpers/pubsub.helper';
 
 class AuthService extends Services.BaseService {
 
-    refreshTokenRepository : Repositories.Repository;
+    private static instance: AuthService;
+    
+    public static getInstance(): AuthService {
+        if (!AuthService.instance) {
+            AuthService.instance = new AuthService();
+        }
 
-    constructor(){
+        return AuthService.instance;
+    }
+
+    private constructor(){
         super(new AuthRepository());
-        this.refreshTokenRepository = new RefreshTokenRepository();
     }
 
     createJwt = (request : Helpers.Request, auth : Helpers.JWT.Auth, buildRefresh : boolean) => {
@@ -16,21 +23,15 @@ class AuthService extends Services.BaseService {
         const accessToken = Helpers.JWT.encodeToken(
             auth,
             Helpers.JWT.SECRET_TYPE.access,
-            Helpers.JWT.TIME.s30
+            Helpers.JWT.TIME.m30
         );
 
         if(buildRefresh){
             const refreshToken = Helpers.JWT.encodeToken(
                 auth,
                 Helpers.JWT.SECRET_TYPE.refresh,
-                Helpers.JWT.TIME.m30
+                Helpers.JWT.TIME.d30
             );
-            
-            this.refreshTokenRepository.create({
-                refreshToken,
-                userId:auth.id,
-                ip:request.getIP()
-            });
     
             return {accessToken,refreshToken}
         }
@@ -56,7 +57,7 @@ class AuthService extends Services.BaseService {
         console.log('users',users);
 
         if(users.resultSize !== 0){
-            throw this.buildError(400,"A User has already registered with the email address.");
+            throw this.buildError(403,"A User has already registered with the email address.");
         }
 
         password = Helpers.Encryption.encryptPassword(password)
@@ -71,25 +72,32 @@ class AuthService extends Services.BaseService {
 
         entity = await this.create(request,entity)
 
-        console.log(entity)
+        console.log(entity);
 
-        Services.PubSub.Organizer.publishEvent({
-            request,
-            type:PubSubEventTypes.AUTH.USER_CREATED,
-            data:{
-                id:entity._id,
-                email,
-                firstName,
-                lastName
-            }
-        });
-
-        return this.createJwt(request,{
+        const auth : Helpers.JWT.Auth = {
             id:entity._id,
             email,
             expiryTime:0
-        },true);
+        };
+
+        const {accessToken,refreshToken} = this.createJwt(request,auth,true);
         
+
+        Services.PubSub.Organizer.publishMessage({
+            request,
+            type:PubSubMessageTypes.AUTH.USER_SIGNED_UP,
+            data:{
+                accessToken,
+                refreshToken,
+                userId:entity._id,
+                email,
+                firstName,
+                lastName,
+                ip:request.getIP()
+            }
+        });
+
+        return {accessToken,refreshToken}
     }
 
     signIn = async(request:Helpers.Request,user) => {
@@ -112,25 +120,30 @@ class AuthService extends Services.BaseService {
         const entity = users.result[0]
 
         if(Helpers.Encryption.checkPassword(entity.password,password) == false){
-            throw this.buildError(401,"Incorrect email/password.")
+            throw this.buildError(403,"Incorrect email/password.")
         }
 
-
-        Services.PubSub.Organizer.publishEvent({
-            request,
-            type:PubSubEventTypes.AUTH.USER_SIGNED_IN,
-            data:{
-                id:entity._id,
-                email
-            }
-        });
-
-        return this.createJwt(request,{
+        const auth : Helpers.JWT.Auth = {
             id:entity._id,
             email,
             expiryTime:0
-        },true);
+        };
 
+        const {accessToken,refreshToken} = this.createJwt(request,auth,true);
+
+        Services.PubSub.Organizer.publishMessage({
+            request,
+            type:PubSubMessageTypes.AUTH.USER_SIGNED_IN,
+            data:{
+                accessToken,
+                refreshToken,
+                userId:entity._id,
+                email,
+                ip:request.getIP()
+            }
+        });
+
+        return {accessToken,refreshToken}
     }
 
     getAccessToken = async(request:Helpers.Request) => {
@@ -142,13 +155,25 @@ class AuthService extends Services.BaseService {
     }
 
     signOut = async(request:Helpers.Request) => {
-        await this.refreshTokenRepository.removeByRefreshToken(request.getTokenValue());
+        Services.PubSub.Organizer.publishMessage({
+            request,
+            type:PubSubMessageTypes.AUTH.USER_SIGN_OUT,
+            data:{
+                refreshToken:request.getTokenValue()
+            }
+        });
     }
 
     signOutAll = async(request:Helpers.Request) => {
-        await this.refreshTokenRepository.removeAllByUserId(request.getUserId());
+        Services.PubSub.Organizer.publishMessage({
+            request,
+            type:PubSubMessageTypes.AUTH.USER_SIGN_OUT_ALL,
+            data:{
+                userId:request.getUserId()
+            }
+        });
     }
 
 }
 
-export default AuthService;
+export default AuthService.getInstance();

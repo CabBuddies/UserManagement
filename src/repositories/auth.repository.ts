@@ -7,7 +7,7 @@ class AuthRepository extends Repositories.BaseRepository {
     }
 
     getUsersByEmail = async(email : string) => {
-        return await this.getAll({ email },5,1,{})
+        return await this.getAll({ email },{},5,1,[])
     }
 
 }
