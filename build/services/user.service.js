@@ -32,7 +32,7 @@ class UserService extends node_library_1.Services.BaseService {
             return this.repository.getAll(query, sort, pageSize, pageNum, attributes);
         });
         this.update = (request, entityId, body) => __awaiter(this, void 0, void 0, function* () {
-            delete body._id;
+            body.lastModifiedAt = new Date();
             return yield this.repository.updateUserByUserId(request.getUserId(), node_library_1.Helpers.JSON.normalizeJson(body));
         });
         node_library_1.Services.PubSub.Organizer.addSubscriber(pubsub_helper_1.PubSubMessageTypes.AUTH.USER_SIGNED_UP, this);

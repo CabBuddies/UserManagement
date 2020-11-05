@@ -1,7 +1,8 @@
 import * as express from 'express';
 import { Router } from 'express';
 import { Middlewares } from 'node-library';
-import { UserController } from '../controllers'
+import { UserController } from '../controllers';
+import UserRelationRoutes from './user.relation.routes';
 
 const router = Router()
 
@@ -9,7 +10,12 @@ const userController = new UserController()
 
 const validatorMiddleware = new Middlewares.ValidatorMiddleware();
 
-const schema = {
+router.param('id',Middlewares.addParamToRequest());
+router.param('userId',Middlewares.addParamToRequest());
+
+router.get('/',Middlewares.authCheck(false),userController.getAll)
+
+router.put('/',Middlewares.authCheck(true),validatorMiddleware.validateRequestBody({
     "type": "object",
     "additionalProperties": false,
     "required": ["firstName","lastName","displayPicture"],
@@ -22,18 +28,24 @@ const schema = {
         },
         "displayPicture":{
             "type":"string"
+        },
+        "preferences":{
+            "type":"object",
+            "additionalProperties": false,
+            "required": ["automaticFollow"],
+            "properties":{
+                "automaticFollow":{
+                    "type":"boolean"
+                }
+            }
         }
     }
-};
-
-router.get('/',Middlewares.authCheck(false),userController.getAll)
-
-router.put('/',Middlewares.authCheck(true),validatorMiddleware.validateRequestBody(schema),userController.update)
+}),userController.update)
 
 router.get('/me',Middlewares.authCheck(true),userController.getMe)
 
 router.get('/:id',Middlewares.authCheck(false),userController.getId)
 
-router.delete('/delete_all',userController.deleteAll)
+router.use('/:userId/relation',UserRelationRoutes);
 
 export{ router }

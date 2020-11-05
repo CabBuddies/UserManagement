@@ -6,7 +6,12 @@ const PubSubMessageTypes = {
         USER_SIGN_OUT_ALL:"AUTH_USER_SIGN_OUT_ALL",
         ACCESS_TOKEN:"AUTH_ACCESS_TOKEN"
     },
-
+    USER_RELATION:{
+        CREATED:"USER_RELATION_CREATED",
+        READ:"USER_RELATION_READ",
+        UPDATED:"USER_RELATION_UPDATED",
+        DELETED:"USER_RELATION_DELETED"
+    }
 }
 
 export {

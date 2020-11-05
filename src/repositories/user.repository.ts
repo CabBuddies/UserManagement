@@ -15,6 +15,10 @@ class UserRepository extends Repositories.BaseRepository {
         return await this.model.findOne({userId})
     }
 
+    getUsersByUserIds = async(userIds:string[]) => {
+        return await this.model.find({"userId":{$in:userIds}});
+    }
+
     updateUserByEmail = async(email : string,entity) => {
         delete entity.userId;
         delete entity.email;

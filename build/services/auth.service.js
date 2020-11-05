@@ -30,7 +30,7 @@ class AuthService extends node_library_1.Services.BaseService {
             const users = yield this.repository.getUsersByEmail(email);
             console.log('users', users);
             if (users.resultSize !== 0) {
-                throw this.buildError(400, "A User has already registered with the email address.");
+                throw this.buildError(403, "A User has already registered with the email address.");
             }
             password = node_library_1.Helpers.Encryption.encryptPassword(password);
             let entity = {
@@ -74,7 +74,7 @@ class AuthService extends node_library_1.Services.BaseService {
             }
             const entity = users.result[0];
             if (node_library_1.Helpers.Encryption.checkPassword(entity.password, password) == false) {
-                throw this.buildError(401, "Incorrect email/password.");
+                throw this.buildError(403, "Incorrect email/password.");
             }
             const auth = {
                 id: entity._id,

@@ -30,6 +30,20 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
         default:''
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now
+    },
+    lastModifiedAt:{
+        type:Date,
+        default:Date.now
+    },
+    preferences:{
+        automaticFollow:{
+            type: Boolean,
+            default: true
+        }
     }
 });
 
