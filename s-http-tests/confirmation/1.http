@@ -1,0 +1,69 @@
+###
+# @name signInAPI
+
+POST http://localhost:4000/api/v1/auth/sign_in
+Content-Type: application/json
+
+{
+    "email":"nihal+test1@cabbuddies.com",
+    "password":"strong"
+}
+
+###
+
+@accessToken = {{signInAPI.response.body.$.accessToken.value}}
+@refreshToken = {{signInAPI.response.body.$.refreshToken.value}}
+
+###
+
+GET http://localhost:4000/api/v1/auth/me
+Authorization: Access {{accessToken}}
+
+###
+
+GET http://localhost:4000/api/v1/user/me
+Authorization: Access {{accessToken}}
+
+###
+
+POST http://localhost:4000/api/v1/user/5f59b9366368501be25f2541/relation
+Authorization: Access {{accessToken}}
+Content-Type: application/json
+
+{
+    "status":"requested"
+}
+###
+
+GET http://localhost:4000/api/v1/auth/send_confirmation_token
+Authorization: Access {{accessToken}}
+
+###
+# @name confirmationAPI
+POST http://localhost:4000/api/v1/auth/confirmation_token
+Authorization: Access {{accessToken}}
+Content-Type: application/json
+
+{
+    "token":"66fe4eb0a8710e02ee31d2fab1e082e3+vMOUsiNmxQRmZS5QT33n+FwvQY8DPq6dabmLEXBVChQu1AtoQuGypgeuxLKTKfA0q/M0oqRBm28D//ky2t6lukxzBKgHcrHl/KBTMF1B/c="
+}
+
+
+###
+
+@confirmedAccessToken = {{confirmationAPI.response.body.$.accessToken.value}}
+@confirmedRefreshToken = {{confirmationAPI.response.body.$.refreshToken.value}}
+
+###
+GET http://localhost:4000/api/v1/auth/me
+Authorization: Access {{confirmedAccessToken}}
+
+###
+
+POST http://localhost:4000/api/v1/user/5f59b9366368501be25f2541/relation
+Authorization: Access {{confirmedAccessToken}}
+Content-Type: application/json
+
+{
+    "status":"requested"
+}

@@ -25,4 +25,10 @@ POST http://localhost:4000/api/v1/user/5f59b8fc6368501be25f253e/relation
 Authorization: Access {{accessToken}}
 Content-Type: application/json
 
-{}
+{
+    "status":"requested"
+}
+
+###
+GET http://localhost:4000/api/v1/user/5f59b93b6368501be25f2544/relation
+Authorization: Access {{accessToken}}

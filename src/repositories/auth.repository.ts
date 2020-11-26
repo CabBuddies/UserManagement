@@ -10,6 +10,18 @@ class AuthRepository extends Repositories.BaseRepository {
         return await this.getAll({ email },{},5,1,[])
     }
 
+    getAccountById = async(_id) => {
+        return await this.get(_id,["account"]);
+    }
+
+    setConfirmedAt = async(_id:string,confirmedAt:Date) => {
+        return this.model.updateOne({_id},{
+            $set:{
+                "account.confirmedAt":confirmedAt
+            }
+        })
+    }
+
 }
 
 export default AuthRepository;

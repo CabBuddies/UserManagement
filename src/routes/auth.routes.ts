@@ -68,11 +68,25 @@ router.post('/sign_in',validatorMiddleware.validateRequestBody({
         }
     }
 }),authController.signIn)
-router.get('/access_token',Middlewares.authCheck(true,true),authController.getAccessToken)
-router.delete('/sign_out',Middlewares.authCheck(true,true),authController.signOut)
-router.delete('/sign_out_all',Middlewares.authCheck(true,true),authController.signOutAll)
+router.get('/access_token',Middlewares.authCheck(true,false,true),authController.getAccessToken)
 
-router.delete('/delete_all',authController.deleteAll)
+router.get('/me',Middlewares.authCheck(true),authController.me)
+
+router.get('/send_confirmation_token',Middlewares.authCheck(true),authController.sendConfirmationToken)
+
+router.post('/confirmation_token',Middlewares.authCheck(true),validatorMiddleware.validateRequestBody({
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["token"],
+    "properties": {
+        "token":{
+            "type":"string"
+        }
+    }
+}),authController.confirmationToken)
+
+router.delete('/sign_out',Middlewares.authCheck(true,false,true),authController.signOut)
+router.delete('/sign_out_all',Middlewares.authCheck(true,false,true),authController.signOutAll)
 
 export { router };
 

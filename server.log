@@ -1,0 +1,4411 @@
+
+> node-user-management@1.0.0 start /Users/appleapple/cabbuddies/node-user-management
+> nodemon -x ts-node ./src/index.ts
+
+[33m[nodemon] 2.0.6[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: ts,json[39m
+[32m[nodemon] starting `ts-node ./src/index.ts`[39m
+{
+  createTransport: [Function],
+  createTestAccount: [Function],
+  getTestMessageUrl: [Function]
+} [Function]
+Mail {
+  _events: [Object: null prototype] {},
+  _eventsCount: 0,
+  _maxListeners: undefined,
+  options: {},
+  _defaults: {},
+  _defaultPlugins: { compile: [ [Function] ], stream: [] },
+  _userPlugins: { compile: [], stream: [] },
+  meta: Map {},
+  dkim: false,
+  transporter: SMTPTransport {
+    _events: [Object: null prototype] {
+      log: [Function],
+      error: [Function],
+      idle: [Function]
+    },
+    _eventsCount: 3,
+    _maxListeners: undefined,
+    options: {
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      auth: [Object],
+      port: 465,
+      secure: true
+    },
+    logger: {
+      info: [Function: info],
+      debug: [Function: debug],
+      error: [Function: error]
+    },
+    name: 'SMTP',
+    version: '2.7.4[client:2.12.0]',
+    mailer: [Circular]
+  },
+  logger: {
+    trace: [Function],
+    debug: [Function],
+    info: [Function],
+    warn: [Function],
+    error: [Function],
+    fatal: [Function]
+  },
+  close: [Function],
+  isIdle: [Function],
+  verify: [Function]
+}
+node-library
+AMJ true true
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ true true
+AMJ true true
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ false false
+AMJ true false
+AMJ true false
+AMJ false false
+POST	/api/v1/auth/sign_up
+POST	/api/v1/auth/sign_in
+GET	/api/v1/auth/access_token
+GET	/api/v1/auth/me
+GET	/api/v1/auth/send_confirmation_token
+POST	/api/v1/auth/confirmation_token
+DELETE	/api/v1/auth/sign_out
+DELETE	/api/v1/auth/sign_out_all
+POST	/api/v1/user/search
+PUT	/api/v1/user
+GET	/api/v1/user/me
+GET	/api/v1/user/:id
+POST	/api/v1/user/:userId/relation
+POST	/api/v1/user/:userId/relation/search
+GET	/api/v1/user/:userId/relation/:id
+PUT	/api/v1/user/:userId/relation/:id
+DELETE	/api/v1/user/:userId/relation/:id
+app listening 4000
+db connected
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606423527402',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606423527402',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423527.532
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606423527402',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423527.532
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606423527402',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423527.532
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test2@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test2@cabbuddies.com' } 5 1
+[
+  {
+    account: { type: 'inapp', registeredAt: 2020-09-10T05:27:18.817Z },
+    _id: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    password: 'aecf5dd7d10bed11abca3f2abb48f2be7dac8e29677115f4519c4f1aefafc63e50e1abf0e8f06cf69e78f373999c238b2lyjDBSSnABaMGJbUmNguw==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606423527402',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNTU3NTU0LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzUyNywiZXhwIjoxNjA2NDIzNTU3fQ.8SdKnYVNi3RrFt306dZid7DrfY4G5Dg4XeixNBYFoKA',
+      expiryTime: 1606423557554
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1NTI3NTU1LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzUyNywiZXhwIjoxNjA5MDE1NTI3fQ.BqXTND4divYxHLAVNh7jgqr9SJyhbvExZPcjCENSn4c',
+      expiryTime: 1609015527555
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606423527402',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNTU3NTU0LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzUyNywiZXhwIjoxNjA2NDIzNTU3fQ.8SdKnYVNi3RrFt306dZid7DrfY4G5Dg4XeixNBYFoKA',
+      expiryTime: 1606423557554
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1NTI3NTU1LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzUyNywiZXhwIjoxNjA5MDE1NTI3fQ.BqXTND4divYxHLAVNh7jgqr9SJyhbvExZPcjCENSn4c',
+      expiryTime: 1609015527555
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNTU3NTU0LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzUyNywiZXhwIjoxNjA2NDIzNTU3fQ.8SdKnYVNi3RrFt306dZid7DrfY4G5Dg4XeixNBYFoKA',
+    expiryTime: 1606423557554
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1NTI3NTU1LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzUyNywiZXhwIjoxNjA5MDE1NTI3fQ.BqXTND4divYxHLAVNh7jgqr9SJyhbvExZPcjCENSn4c',
+    expiryTime: 1609015527555
+  },
+  isConfirmed: false,
+  userId: 5f59b9366368501be25f2541
+}
+::ffff:127.0.0.1 POST /sign_in 164MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606423678880',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606423678880',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423678.992
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606423678880',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423678.992
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606423678880',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423678.992
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test2@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test2@cabbuddies.com' } 5 1
+[
+  {
+    account: { type: 'inapp', registeredAt: 2020-09-10T05:27:18.817Z },
+    _id: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    password: 'aecf5dd7d10bed11abca3f2abb48f2be7dac8e29677115f4519c4f1aefafc63e50e1abf0e8f06cf69e78f373999c238b2lyjDBSSnABaMGJbUmNguw==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606423678880',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNzA4OTk3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzY3OCwiZXhwIjoxNjA2NDIzNzA4fQ.v_7HvsBobEDtZ6TtJ3nDxpoObZ1lxzZg23dfNWlnzEc',
+      expiryTime: 1606423708997
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1Njc4OTk3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzY3OCwiZXhwIjoxNjA5MDE1Njc4fQ.FgwSgkfjXgWgFxhvwfTN4dJboOwqsqQXZ76TN_BoO0Q',
+      expiryTime: 1609015678997
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606423678880',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNzA4OTk3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzY3OCwiZXhwIjoxNjA2NDIzNzA4fQ.v_7HvsBobEDtZ6TtJ3nDxpoObZ1lxzZg23dfNWlnzEc',
+      expiryTime: 1606423708997
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1Njc4OTk3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzY3OCwiZXhwIjoxNjA5MDE1Njc4fQ.FgwSgkfjXgWgFxhvwfTN4dJboOwqsqQXZ76TN_BoO0Q',
+      expiryTime: 1609015678997
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNzA4OTk3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzY3OCwiZXhwIjoxNjA2NDIzNzA4fQ.v_7HvsBobEDtZ6TtJ3nDxpoObZ1lxzZg23dfNWlnzEc',
+    expiryTime: 1606423708997
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1Njc4OTk3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzY3OCwiZXhwIjoxNjA5MDE1Njc4fQ.FgwSgkfjXgWgFxhvwfTN4dJboOwqsqQXZ76TN_BoO0Q',
+    expiryTime: 1609015678997
+  },
+  isConfirmed: false,
+  userId: 5f59b9366368501be25f2541
+}
+::ffff:127.0.0.1 POST /sign_in 120MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606423726137',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606423726137',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423726.273
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606423726137',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423726.273
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606423726137',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423726.273
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test2@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test2@cabbuddies.com' } 5 1
+[
+  {
+    account: { type: 'inapp', registeredAt: 2020-09-10T05:27:18.817Z },
+    _id: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    password: 'aecf5dd7d10bed11abca3f2abb48f2be7dac8e29677115f4519c4f1aefafc63e50e1abf0e8f06cf69e78f373999c238b2lyjDBSSnABaMGJbUmNguw==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606423726137',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNzU2Mjc3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzcyNiwiZXhwIjoxNjA2NDIzNzU2fQ.I5FyyaU6JZE_KAcixmMSp60kW4Hp2C3mCYyvr46MmJo',
+      expiryTime: 1606423756277
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1NzI2Mjc4LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzcyNiwiZXhwIjoxNjA5MDE1NzI2fQ.l9NclM5TgjOI_q_CQXAOwn8Dg45JJ0bTBhh5PsNM3wQ',
+      expiryTime: 1609015726278
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606423726137',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNzU2Mjc3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzcyNiwiZXhwIjoxNjA2NDIzNzU2fQ.I5FyyaU6JZE_KAcixmMSp60kW4Hp2C3mCYyvr46MmJo',
+      expiryTime: 1606423756277
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1NzI2Mjc4LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzcyNiwiZXhwIjoxNjA5MDE1NzI2fQ.l9NclM5TgjOI_q_CQXAOwn8Dg45JJ0bTBhh5PsNM3wQ',
+      expiryTime: 1609015726278
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzNzU2Mjc3LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzcyNiwiZXhwIjoxNjA2NDIzNzU2fQ.I5FyyaU6JZE_KAcixmMSp60kW4Hp2C3mCYyvr46MmJo',
+    expiryTime: 1606423756277
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1NzI2Mjc4LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzcyNiwiZXhwIjoxNjA5MDE1NzI2fQ.l9NclM5TgjOI_q_CQXAOwn8Dg45JJ0bTBhh5PsNM3wQ',
+    expiryTime: 1609015726278
+  },
+  isConfirmed: false,
+  userId: 5f59b9366368501be25f2541
+}
+::ffff:127.0.0.1 POST /sign_in 143MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606423813776',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606423813776',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423813.901
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606423813776',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423813.901
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606423813776',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423813.901
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test2@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test2@cabbuddies.com' } 5 1
+[
+  {
+    account: { type: 'inapp', registeredAt: 2020-09-10T05:27:18.817Z },
+    _id: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    password: 'aecf5dd7d10bed11abca3f2abb48f2be7dac8e29677115f4519c4f1aefafc63e50e1abf0e8f06cf69e78f373999c238b2lyjDBSSnABaMGJbUmNguw==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606423813776',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzODQzOTA2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzgxMywiZXhwIjoxNjA2NDIzODQzfQ.iTU-pLECfOgrTADgeslvjSpqBXIPutmhO85-K-64XVc',
+      expiryTime: 1606423843906
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1ODEzOTA2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzgxMywiZXhwIjoxNjA5MDE1ODEzfQ.boUkHNT4ooP8VCDkGpY-_A8LjHKj1nYUXR9RuaNHrL8',
+      expiryTime: 1609015813906
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606423813776',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzODQzOTA2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzgxMywiZXhwIjoxNjA2NDIzODQzfQ.iTU-pLECfOgrTADgeslvjSpqBXIPutmhO85-K-64XVc',
+      expiryTime: 1606423843906
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1ODEzOTA2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzgxMywiZXhwIjoxNjA5MDE1ODEzfQ.boUkHNT4ooP8VCDkGpY-_A8LjHKj1nYUXR9RuaNHrL8',
+      expiryTime: 1609015813906
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDIzODQzOTA2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzgxMywiZXhwIjoxNjA2NDIzODQzfQ.iTU-pLECfOgrTADgeslvjSpqBXIPutmhO85-K-64XVc',
+    expiryTime: 1606423843906
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1ODEzOTA2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzgxMywiZXhwIjoxNjA5MDE1ODEzfQ.boUkHNT4ooP8VCDkGpY-_A8LjHKj1nYUXR9RuaNHrL8',
+    expiryTime: 1609015813906
+  },
+  isConfirmed: false,
+  userId: 5f59b9366368501be25f2541
+}
+::ffff:127.0.0.1 POST /sign_in 131MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606423994076',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606423994076',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423994.197
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606423994076',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423994.197
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606423994076',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423994.197
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test2@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test2@cabbuddies.com' } 5 1
+[
+  {
+    account: { type: 'inapp', registeredAt: 2020-09-10T05:27:18.817Z },
+    _id: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    password: 'aecf5dd7d10bed11abca3f2abb48f2be7dac8e29677115f4519c4f1aefafc63e50e1abf0e8f06cf69e78f373999c238b2lyjDBSSnABaMGJbUmNguw==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606423994076',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8',
+      expiryTime: 1606424024201
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1OTk0MjAyLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA5MDE1OTk0fQ.kOs3YE-UW1ujkaeA2CcambuNiWnn3G6Uc6IupN2kYWo',
+      expiryTime: 1609015994202
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606423994076',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8',
+      expiryTime: 1606424024201
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1OTk0MjAyLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA5MDE1OTk0fQ.kOs3YE-UW1ujkaeA2CcambuNiWnn3G6Uc6IupN2kYWo',
+      expiryTime: 1609015994202
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8',
+    expiryTime: 1606424024201
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE1OTk0MjAyLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA5MDE1OTk0fQ.kOs3YE-UW1ujkaeA2CcambuNiWnn3G6Uc6IupN2kYWo',
+    expiryTime: 1609015994202
+  },
+  isConfirmed: false,
+  userId: 5f59b9366368501be25f2541
+}
+::ffff:127.0.0.1 POST /sign_in 127MS
+logger version v1
+::ffff:127.0.0.1 GET /api/v1/auth/send_confirmation_token {} {}
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606423994214',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  authorization: 'Access ' +
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8',
+  'content-type': 'application/json',
+  'user-agent': 'axios/0.20.0',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8
+middleware requestProcessor Request {
+  id: '1606423994214',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606423994.327
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: true
+}
+requestProcessor activeTokenCount 1 {
+  id: '5f59b9366368501be25f2541',
+  email: 'nihal+test2@cabbuddies.com',
+  expiryTime: 1606424024201,
+  isConfirmed: false,
+  iat: 1606423994,
+  exp: 1606424024
+}
+middleware requestProcessor almost done Request {
+  id: '1606423994214',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: false,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8',
+      expiryTime: 1606424024201,
+      isExpired: false,
+      secondsToExpiry: 29.872
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: true
+}
+AMJ Request {
+  id: '1606423994214',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: false,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MDI0MjAxLCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyMzk5NCwiZXhwIjoxNjA2NDI0MDI0fQ.x0Y-6j55iKeA07vwAGxOq13HljCc9cD3axzaBq-F3l8',
+      expiryTime: 1606424024201,
+      isExpired: false,
+      secondsToExpiry: 29.872
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: true
+}
+AMJ true
+AMJ done
+::ffff:127.0.0.1 GET /send_confirmation_token 2097MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424161414',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606424161414',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424161.531
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606424161414',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424161.531
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606424161414',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424161.531
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test2@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test2@cabbuddies.com' } 5 1
+[
+  {
+    account: { type: 'inapp', registeredAt: 2020-09-10T05:27:18.817Z },
+    _id: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    password: 'aecf5dd7d10bed11abca3f2abb48f2be7dac8e29677115f4519c4f1aefafc63e50e1abf0e8f06cf69e78f373999c238b2lyjDBSSnABaMGJbUmNguw==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606424161414',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+      expiryTime: 1606424191536
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MTYxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA5MDE2MTYxfQ.7APFECivDNVv-fQ7lV_rW3f9r0iyPYF-zLB_fbcYFl4',
+      expiryTime: 1609016161536
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606424161414',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+      expiryTime: 1606424191536
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MTYxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA5MDE2MTYxfQ.7APFECivDNVv-fQ7lV_rW3f9r0iyPYF-zLB_fbcYFl4',
+      expiryTime: 1609016161536
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+    expiryTime: 1606424191536
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MTYxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA5MDE2MTYxfQ.7APFECivDNVv-fQ7lV_rW3f9r0iyPYF-zLB_fbcYFl4',
+    expiryTime: 1609016161536
+  },
+  isConfirmed: false,
+  userId: 5f59b9366368501be25f2541
+}
+::ffff:127.0.0.1 POST /sign_in 124MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/confirmation_token {} { token: '892326' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424161549',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ' +
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '18',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s
+middleware requestProcessor Request {
+  id: '1606424161549',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424161.666
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { token: '892326' }, query: {}, params: {} },
+  hasToken: true
+}
+requestProcessor activeTokenCount 1 {
+  id: '5f59b9366368501be25f2541',
+  email: 'nihal+test2@cabbuddies.com',
+  expiryTime: 1606424191536,
+  isConfirmed: false,
+  iat: 1606424161,
+  exp: 1606424191
+}
+middleware requestProcessor almost done Request {
+  id: '1606424161549',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: false,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+      expiryTime: 1606424191536,
+      isExpired: false,
+      secondsToExpiry: 29.869
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { token: '892326' }, query: {}, params: {} },
+  hasToken: true
+}
+AMJ Request {
+  id: '1606424161549',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: false,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+      expiryTime: 1606424191536,
+      isExpired: false,
+      secondsToExpiry: 29.869
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { token: '892326' }, query: {}, params: {} },
+  hasToken: true
+}
+AMJ true
+AMJ done
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'token' ],
+  properties: { token: { type: 'string' } }
+}
+Request {
+  id: '1606424161549',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: false,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNTM2LCJpc0NvbmZpcm1lZCI6ZmFsc2UsImlhdCI6MTYwNjQyNDE2MSwiZXhwIjoxNjA2NDI0MTkxfQ.7E5GtVJsqUOM2iqEVvUaBjyt9_e8ris0VvTxC9iFL2s',
+      expiryTime: 1606424191536,
+      isExpired: false,
+      secondsToExpiry: 29.869
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { token: '892326' }, query: {}, params: {} },
+  hasToken: true
+} { token: '892326' }
+PubSub {
+  request: Request {
+    id: '1606424161549',
+    user: {
+      isAuthenticated: true,
+      isConfirmed: false,
+      id: '5f59b9366368501be25f2541',
+      email: 'nihal+test2@cabbuddies.com'
+    },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_CONFIRMED',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNjc1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MTYxLCJleHAiOjE2MDY0MjQxOTF9.seHMVLWCG2C9HwDCd9TSwY3A9TnjrhOuG9qa3Dz0R8o',
+      expiryTime: 1606424191675
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MTYxNjc1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MTYxLCJleHAiOjE2MDkwMTYxNjF9.zbwWo796CtwE03AaMK5mf4oJSuTT3B37qBLBCBDqr8o',
+      expiryTime: 1609016161675
+    },
+    userId: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606424161549',
+    user: {
+      isAuthenticated: true,
+      isConfirmed: false,
+      id: '5f59b9366368501be25f2541',
+      email: 'nihal+test2@cabbuddies.com'
+    },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_CONFIRMED',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNjc1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MTYxLCJleHAiOjE2MDY0MjQxOTF9.seHMVLWCG2C9HwDCd9TSwY3A9TnjrhOuG9qa3Dz0R8o',
+      expiryTime: 1606424191675
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MTYxNjc1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MTYxLCJleHAiOjE2MDkwMTYxNjF9.zbwWo796CtwE03AaMK5mf4oJSuTT3B37qBLBCBDqr8o',
+      expiryTime: 1609016161675
+    },
+    userId: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MTkxNjc1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MTYxLCJleHAiOjE2MDY0MjQxOTF9.seHMVLWCG2C9HwDCd9TSwY3A9TnjrhOuG9qa3Dz0R8o',
+    expiryTime: 1606424191675
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MTYxNjc1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MTYxLCJleHAiOjE2MDkwMTYxNjF9.zbwWo796CtwE03AaMK5mf4oJSuTT3B37qBLBCBDqr8o',
+    expiryTime: 1609016161675
+  },
+  isConfirmed: true,
+  userId: '5f59b9366368501be25f2541'
+}
+::ffff:127.0.0.1 POST /confirmation_token 128MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424207309',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606424207309',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424207.421
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606424207309',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424207.421
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606424207309',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424207.421
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test2@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test2@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test2@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test2@cabbuddies.com' } 5 1
+[
+  {
+    account: {
+      type: 'inapp',
+      registeredAt: 2020-09-10T05:27:18.817Z,
+      confirmedAt: 2020-11-26T20:56:01.670Z
+    },
+    _id: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    password: 'aecf5dd7d10bed11abca3f2abb48f2be7dac8e29677115f4519c4f1aefafc63e50e1abf0e8f06cf69e78f373999c238b2lyjDBSSnABaMGJbUmNguw==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606424207309',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+      expiryTime: 1606424237425
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MjA3NDI2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDkwMTYyMDd9.jHI0jKeDqV7U5w1hdgtqzG7c3DBJHjjKA6RANi_HYkY',
+      expiryTime: 1609016207426
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606424207309',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+      expiryTime: 1606424237425
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MjA3NDI2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDkwMTYyMDd9.jHI0jKeDqV7U5w1hdgtqzG7c3DBJHjjKA6RANi_HYkY',
+      expiryTime: 1609016207426
+    },
+    userId: 5f59b9366368501be25f2541,
+    email: 'nihal+test2@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+    expiryTime: 1606424237425
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2MjA3NDI2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDkwMTYyMDd9.jHI0jKeDqV7U5w1hdgtqzG7c3DBJHjjKA6RANi_HYkY',
+    expiryTime: 1609016207426
+  },
+  isConfirmed: true,
+  userId: 5f59b9366368501be25f2541
+}
+::ffff:127.0.0.1 POST /sign_in 118MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/user/5f59b8fc6368501be25f253e/relation/ {} { status: 'requested' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424207455',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ' +
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '22',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE
+middleware requestProcessor Request {
+  id: '1606424207455',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424207.565
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { status: 'requested' }, query: {}, params: {} },
+  hasToken: true
+}
+requestProcessor activeTokenCount 1 {
+  id: '5f59b9366368501be25f2541',
+  email: 'nihal+test2@cabbuddies.com',
+  expiryTime: 1606424237425,
+  isConfirmed: true,
+  iat: 1606424207,
+  exp: 1606424237
+}
+middleware requestProcessor almost done Request {
+  id: '1606424207455',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+      expiryTime: 1606424237425,
+      isExpired: false,
+      secondsToExpiry: 29.86
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { status: 'requested' }, query: {}, params: {} },
+  hasToken: true
+}
+AMJ Request {
+  id: '1606424207455',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+      expiryTime: 1606424237425,
+      isExpired: false,
+      secondsToExpiry: 29.86
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { status: 'requested' },
+    query: {},
+    params: { userId: '5f59b8fc6368501be25f253e' }
+  },
+  hasToken: true
+}
+AMJ true
+AMJ done
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'status' ],
+  properties: { status: { type: 'string', enum: [Array] } }
+}
+user.relation.service Request {
+  id: '1606424207455',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOTM2NjM2ODUwMWJlMjVmMjU0MSIsImVtYWlsIjoibmloYWwrdGVzdDJAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0MjM3NDI1LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0MjA3LCJleHAiOjE2MDY0MjQyMzd9.6uN4kYj7WuwLwprwnxO5e6eW8E8dpuXHo8tDDBac-hE',
+      expiryTime: 1606424237425,
+      isExpired: false,
+      secondsToExpiry: 29.86
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { status: 'requested' },
+    query: {},
+    params: { userId: '5f59b8fc6368501be25f253e' }
+  },
+  hasToken: true
+} {
+  status: 'requested',
+  followeeId: '5f59b8fc6368501be25f253e',
+  followerId: '5f59b9366368501be25f2541',
+  author: '5f59b8fc6368501be25f253e'
+}
+UserRepository getUserByUserId 5f59b8fc6368501be25f253e
+user.relation.service create followee {
+  preferences: { automaticFollow: false },
+  displayPicture: 'randomer',
+  _id: 5f59b8fc6368501be25f253f,
+  userId: '5f59b8fc6368501be25f253e',
+  email: 'nihal+test1@cabbuddies.com',
+  firstName: 'Nihal',
+  lastName: 'Konda',
+  __v: 0,
+  lastModifiedAt: 2020-11-12T21:46:47.156Z,
+  createdAt: 2020-11-26T20:56:47.572Z
+}
+UserRepository getUserByUserId 5f59b9366368501be25f2541
+user.relation.service create follower {
+  preferences: { automaticFollow: true },
+  displayPicture: '',
+  _id: 5f59b9366368501be25f2542,
+  userId: '5f59b9366368501be25f2541',
+  email: 'nihal+test2@cabbuddies.com',
+  firstName: 'Nihal',
+  lastName: 'Konda',
+  __v: 0,
+  createdAt: 2020-11-26T20:56:47.575Z,
+  lastModifiedAt: 2020-11-26T20:56:47.575Z
+}
+user.relation.service db insert {
+  status: 'requested',
+  followeeId: '5f59b8fc6368501be25f253e',
+  followerId: '5f59b9366368501be25f2541',
+  author: '5f59b8fc6368501be25f253e'
+}
+PubSub {
+  request: Request {
+    id: '1606424207455',
+    user: {
+      isAuthenticated: true,
+      isConfirmed: true,
+      id: '5f59b9366368501be25f2541',
+      email: 'nihal+test2@cabbuddies.com'
+    },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: [Object] },
+    hasToken: true
+  },
+  type: 'USER_RELATION_CREATED',
+  data: {
+    status: 'requested',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z,
+    __v: 0
+  }
+}
+user.relation.service published message
+embedAuthorInformation [
+  {
+    status: 'requested',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z,
+    __v: 0
+  }
+]
+embedAuthorInformation {
+  '5f59b8fc6368501be25f253e': {
+    preferences: { automaticFollow: false },
+    displayPicture: 'randomer',
+    _id: '5f59b8fc6368501be25f253f',
+    userId: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    lastModifiedAt: '2020-11-12T21:46:47.156Z',
+    createdAt: '2020-11-26T20:56:47.585Z'
+  },
+  '5f59b9366368501be25f2541': {
+    preferences: { automaticFollow: true },
+    displayPicture: '',
+    _id: '5f59b9366368501be25f2542',
+    userId: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    createdAt: '2020-11-26T20:56:47.585Z',
+    lastModifiedAt: '2020-11-26T20:56:47.585Z'
+  }
+}
+embedAuthorInformation [
+  {
+    status: 'requested',
+    _id: '5fc0168f6363047390a37e74',
+    followeeId: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T20:56:47.585Z'
+    },
+    followerId: {
+      preferences: [Object],
+      displayPicture: '',
+      _id: '5f59b9366368501be25f2542',
+      userId: '5f59b9366368501be25f2541',
+      email: 'nihal+test2@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      createdAt: '2020-11-26T20:56:47.585Z',
+      lastModifiedAt: '2020-11-26T20:56:47.585Z'
+    },
+    author: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T20:56:47.585Z'
+    },
+    createdAt: '2020-11-26T20:56:47.576Z',
+    lastModifiedAt: '2020-11-26T20:56:47.576Z',
+    __v: 0
+  }
+]
+::ffff:127.0.0.1 POST / 131MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424485823',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606424485823',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424485.933
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606424485823',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424485.933
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606424485823',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424485.933
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test1@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test1@cabbuddies.com' } 5 1
+[
+  {
+    account: {
+      type: 'inapp',
+      registeredAt: 2020-09-10T05:26:20.434Z,
+      confirmedAt: 2020-11-19T21:38:20.636Z
+    },
+    _id: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    password: '3dcaed7ea3a63dbfaf9e135c0ddfa2f9da3a9f454f08a4abb17f355bcff21564f39c7b32fdb84da70575baf4e9062aa1xh64suPvY42IMkbUTZtxRA==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606424485823',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s',
+      expiryTime: 1606424515937
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2NDg1OTM4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDkwMTY0ODV9.QTJeaN4kcN6gqYH0H4ky1atk7gFDLKHh5eCXAGmDJBQ',
+      expiryTime: 1609016485938
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606424485823',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s',
+      expiryTime: 1606424515937
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2NDg1OTM4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDkwMTY0ODV9.QTJeaN4kcN6gqYH0H4ky1atk7gFDLKHh5eCXAGmDJBQ',
+      expiryTime: 1609016485938
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s',
+    expiryTime: 1606424515937
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2NDg1OTM4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDkwMTY0ODV9.QTJeaN4kcN6gqYH0H4ky1atk7gFDLKHh5eCXAGmDJBQ',
+    expiryTime: 1609016485938
+  },
+  isConfirmed: true,
+  userId: 5f59b8fc6368501be25f253e
+}
+::ffff:127.0.0.1 POST /sign_in 116MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/user/5f59b8fc6368501be25f253e/relation/search?pageSize=5&pageNum=1 { pageSize: '5', pageNum: '1' } { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424485969',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ' +
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '63',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s
+middleware requestProcessor Request {
+  id: '1606424485969',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424486.08
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 },
+    query: { pageSize: '5', pageNum: '1' },
+    params: {}
+  },
+  hasToken: true
+}
+requestProcessor activeTokenCount 1 {
+  id: '5f59b8fc6368501be25f253e',
+  email: 'nihal+test1@cabbuddies.com',
+  expiryTime: 1606424515937,
+  isConfirmed: true,
+  iat: 1606424485,
+  exp: 1606424515
+}
+middleware requestProcessor almost done Request {
+  id: '1606424485969',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s',
+      expiryTime: 1606424515937,
+      isExpired: false,
+      secondsToExpiry: 29.856
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 },
+    query: { pageSize: '5', pageNum: '1' },
+    params: {}
+  },
+  hasToken: true
+}
+AMJ Request {
+  id: '1606424485969',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTE1OTM3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NDg1LCJleHAiOjE2MDY0MjQ1MTV9.nEeYWqGSldqR__lEIvuWsTtC2s77lihqGeJCbUzuL7s',
+      expiryTime: 1606424515937,
+      isExpired: false,
+      secondsToExpiry: 29.856
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 },
+    query: { pageSize: '5', pageNum: '1' },
+    params: { userId: '5f59b8fc6368501be25f253e' }
+  },
+  hasToken: true
+}
+AMJ true
+AMJ done
+base.repository { '$and': [ {}, { '$or': [Array] } ] } {} [
+  'author',
+  'followeeId',
+  'followerId',
+  'lastModifiedAt',
+  'createdAt',
+  'status'
+] 5 1
+{ '$and': [ {}, { '$or': [Array] } ] } 5 1
+[
+  {
+    status: 'requested',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z
+  }
+]
+embedAuthorInformation [
+  {
+    status: 'requested',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z
+  }
+]
+embedAuthorInformation {
+  '5f59b8fc6368501be25f253e': {
+    preferences: { automaticFollow: false },
+    displayPicture: 'randomer',
+    _id: '5f59b8fc6368501be25f253f',
+    userId: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    lastModifiedAt: '2020-11-12T21:46:47.156Z',
+    createdAt: '2020-11-26T21:01:26.094Z'
+  },
+  '5f59b9366368501be25f2541': {
+    preferences: { automaticFollow: true },
+    displayPicture: '',
+    _id: '5f59b9366368501be25f2542',
+    userId: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    createdAt: '2020-11-26T21:01:26.095Z',
+    lastModifiedAt: '2020-11-26T21:01:26.095Z'
+  }
+}
+embedAuthorInformation [
+  {
+    status: 'requested',
+    _id: '5fc0168f6363047390a37e74',
+    followeeId: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T21:01:26.094Z'
+    },
+    followerId: {
+      preferences: [Object],
+      displayPicture: '',
+      _id: '5f59b9366368501be25f2542',
+      userId: '5f59b9366368501be25f2541',
+      email: 'nihal+test2@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      createdAt: '2020-11-26T21:01:26.095Z',
+      lastModifiedAt: '2020-11-26T21:01:26.095Z'
+    },
+    author: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T21:01:26.094Z'
+    },
+    createdAt: '2020-11-26T20:56:47.576Z',
+    lastModifiedAt: '2020-11-26T20:56:47.576Z'
+  }
+]
+::ffff:127.0.0.1 POST /search?pageSize=5&pageNum=1 128MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424530035',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606424530035',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424530.149
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606424530035',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424530.149
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606424530035',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424530.149
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test1@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test1@cabbuddies.com' } 5 1
+[
+  {
+    account: {
+      type: 'inapp',
+      registeredAt: 2020-09-10T05:26:20.434Z,
+      confirmedAt: 2020-11-19T21:38:20.636Z
+    },
+    _id: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    password: '3dcaed7ea3a63dbfaf9e135c0ddfa2f9da3a9f454f08a4abb17f355bcff21564f39c7b32fdb84da70575baf4e9062aa1xh64suPvY42IMkbUTZtxRA==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606424530035',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE',
+      expiryTime: 1606424560153
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2NTMwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDkwMTY1MzB9.89Ri3mj-D8xD-PFjEmG_LCNr-MrGphWXVW2SgwUvkvI',
+      expiryTime: 1609016530153
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606424530035',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE',
+      expiryTime: 1606424560153
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2NTMwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDkwMTY1MzB9.89Ri3mj-D8xD-PFjEmG_LCNr-MrGphWXVW2SgwUvkvI',
+      expiryTime: 1609016530153
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE',
+    expiryTime: 1606424560153
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2NTMwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDkwMTY1MzB9.89Ri3mj-D8xD-PFjEmG_LCNr-MrGphWXVW2SgwUvkvI',
+    expiryTime: 1609016530153
+  },
+  isConfirmed: true,
+  userId: 5f59b8fc6368501be25f253e
+}
+::ffff:127.0.0.1 POST /sign_in 120MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/user/5f59b8fc6368501be25f253e/relation/search?pageSize=5&pageNum=1 { pageSize: '5', pageNum: '1' } { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424530168',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ' +
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '63',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE
+middleware requestProcessor Request {
+  id: '1606424530168',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424530.281
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 },
+    query: { pageSize: '5', pageNum: '1' },
+    params: {}
+  },
+  hasToken: true
+}
+requestProcessor activeTokenCount 1 {
+  id: '5f59b8fc6368501be25f253e',
+  email: 'nihal+test1@cabbuddies.com',
+  expiryTime: 1606424560153,
+  isConfirmed: true,
+  iat: 1606424530,
+  exp: 1606424560
+}
+middleware requestProcessor almost done Request {
+  id: '1606424530168',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE',
+      expiryTime: 1606424560153,
+      isExpired: false,
+      secondsToExpiry: 29.871
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 },
+    query: { pageSize: '5', pageNum: '1' },
+    params: {}
+  },
+  hasToken: true
+}
+AMJ Request {
+  id: '1606424530168',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0NTYwMTUzLCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0NTMwLCJleHAiOjE2MDY0MjQ1NjB9.vWyqUqED5x5ODvBGFZVPox1rn6eA4joSnucdFVncJuE',
+      expiryTime: 1606424560153,
+      isExpired: false,
+      secondsToExpiry: 29.871
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { query: {}, sort: {}, attributes: [], pageNum: 1, pageSize: 5 },
+    query: { pageSize: '5', pageNum: '1' },
+    params: { userId: '5f59b8fc6368501be25f253e' }
+  },
+  hasToken: true
+}
+AMJ true
+AMJ done
+base.repository { '$and': [ {}, { '$or': [Array] } ] } {} [
+  'author',
+  'followeeId',
+  'followerId',
+  'lastModifiedAt',
+  'createdAt',
+  'status'
+] 5 1
+{ '$and': [ {}, { '$or': [Array] } ] } 5 1
+[
+  {
+    status: 'requested',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z
+  }
+]
+embedAuthorInformation [
+  {
+    status: 'requested',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z
+  }
+]
+embedAuthorInformation {
+  '5f59b8fc6368501be25f253e': {
+    preferences: { automaticFollow: false },
+    displayPicture: 'randomer',
+    _id: '5f59b8fc6368501be25f253f',
+    userId: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    lastModifiedAt: '2020-11-12T21:46:47.156Z',
+    createdAt: '2020-11-26T21:02:10.288Z'
+  },
+  '5f59b9366368501be25f2541': {
+    preferences: { automaticFollow: true },
+    displayPicture: '',
+    _id: '5f59b9366368501be25f2542',
+    userId: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    createdAt: '2020-11-26T21:02:10.289Z',
+    lastModifiedAt: '2020-11-26T21:02:10.289Z'
+  }
+}
+embedAuthorInformation [
+  {
+    status: 'requested',
+    _id: '5fc0168f6363047390a37e74',
+    followeeId: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T21:02:10.288Z'
+    },
+    followerId: {
+      preferences: [Object],
+      displayPicture: '',
+      _id: '5f59b9366368501be25f2542',
+      userId: '5f59b9366368501be25f2541',
+      email: 'nihal+test2@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      createdAt: '2020-11-26T21:02:10.289Z',
+      lastModifiedAt: '2020-11-26T21:02:10.289Z'
+    },
+    author: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T21:02:10.288Z'
+    },
+    createdAt: '2020-11-26T20:56:47.576Z',
+    lastModifiedAt: '2020-11-26T20:56:47.576Z'
+  }
+]
+::ffff:127.0.0.1 POST /search?pageSize=5&pageNum=1 123MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424809584',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606424809584',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424809.701
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606424809584',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424809.701
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606424809584',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424809.701
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test1@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test1@cabbuddies.com' } 5 1
+[
+  {
+    account: {
+      type: 'inapp',
+      registeredAt: 2020-09-10T05:26:20.434Z,
+      confirmedAt: 2020-11-19T21:38:20.636Z
+    },
+    _id: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    password: '3dcaed7ea3a63dbfaf9e135c0ddfa2f9da3a9f454f08a4abb17f355bcff21564f39c7b32fdb84da70575baf4e9062aa1xh64suPvY42IMkbUTZtxRA==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606424809584',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw',
+      expiryTime: 1606424839706
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2ODA5NzA3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDkwMTY4MDl9.OkpBUYkKkXGgLyN9JqZbWDS2Z9sQrsvV_moBEr-wrs8',
+      expiryTime: 1609016809707
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606424809584',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw',
+      expiryTime: 1606424839706
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2ODA5NzA3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDkwMTY4MDl9.OkpBUYkKkXGgLyN9JqZbWDS2Z9sQrsvV_moBEr-wrs8',
+      expiryTime: 1609016809707
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw',
+    expiryTime: 1606424839706
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2ODA5NzA3LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDkwMTY4MDl9.OkpBUYkKkXGgLyN9JqZbWDS2Z9sQrsvV_moBEr-wrs8',
+    expiryTime: 1609016809707
+  },
+  isConfirmed: true,
+  userId: 5f59b8fc6368501be25f253e
+}
+::ffff:127.0.0.1 POST /sign_in 124MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/user/5f59b8fc6368501be25f253e/relation/search?pageSize=5&pageNum=1 { pageSize: '5', pageNum: '1' } {
+  query: { '$and': [ [Object], [Object] ] },
+  sort: {},
+  attributes: [],
+  pageNum: 1,
+  pageSize: 5
+}
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424809733',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ' +
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '187',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw
+middleware requestProcessor Request {
+  id: '1606424809733',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424809.846
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: {
+      query: [Object],
+      sort: {},
+      attributes: [],
+      pageNum: 1,
+      pageSize: 5
+    },
+    query: { pageSize: '5', pageNum: '1' },
+    params: {}
+  },
+  hasToken: true
+}
+requestProcessor activeTokenCount 1 {
+  id: '5f59b8fc6368501be25f253e',
+  email: 'nihal+test1@cabbuddies.com',
+  expiryTime: 1606424839706,
+  isConfirmed: true,
+  iat: 1606424809,
+  exp: 1606424839
+}
+middleware requestProcessor almost done Request {
+  id: '1606424809733',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw',
+      expiryTime: 1606424839706,
+      isExpired: false,
+      secondsToExpiry: 29.859
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: {
+      query: [Object],
+      sort: {},
+      attributes: [],
+      pageNum: 1,
+      pageSize: 5
+    },
+    query: { pageSize: '5', pageNum: '1' },
+    params: {}
+  },
+  hasToken: true
+}
+AMJ Request {
+  id: '1606424809733',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODM5NzA2LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODA5LCJleHAiOjE2MDY0MjQ4Mzl9.U1Apw_6yCAm0Rejjh8TTNfVt-eFlTWxrXo6Tds328Lw',
+      expiryTime: 1606424839706,
+      isExpired: false,
+      secondsToExpiry: 29.859
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: {
+      query: [Object],
+      sort: {},
+      attributes: [],
+      pageNum: 1,
+      pageSize: 5
+    },
+    query: { pageSize: '5', pageNum: '1' },
+    params: { userId: '5f59b8fc6368501be25f253e' }
+  },
+  hasToken: true
+}
+AMJ true
+AMJ done
+base.repository { '$and': [ { '$and': [Array] }, { '$or': [Array] } ] } {} [
+  'author',
+  'followeeId',
+  'followerId',
+  'lastModifiedAt',
+  'createdAt',
+  'status'
+] 5 1
+{ '$and': [ { '$and': [Array] }, { '$or': [Array] } ] } 5 1
+[]
+embedAuthorInformation []
+::ffff:127.0.0.1 POST /search?pageSize=5&pageNum=1 116MS
+logger version v1
+::ffff:127.0.0.1 POST /api/v1/auth/sign_in {} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424823852',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '58',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access 
+middleware requestProcessor Request {
+  id: '1606424823852',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424823.963
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+middleware requestProcessor almost done Request {
+  id: '1606424823852',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424823.963
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+}
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'email', 'password' ],
+  properties: { email: { type: 'string' }, password: { type: 'string' } }
+}
+Request {
+  id: '1606424823852',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424823.963
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { email: 'nihal+test1@cabbuddies.com', password: 'strong' },
+    query: {},
+    params: {}
+  },
+  hasToken: true
+} { email: 'nihal+test1@cabbuddies.com', password: 'strong' }
+base.repository { email: 'nihal+test1@cabbuddies.com' } {} [] 5 1
+{ email: 'nihal+test1@cabbuddies.com' } 5 1
+[
+  {
+    account: {
+      type: 'inapp',
+      registeredAt: 2020-09-10T05:26:20.434Z,
+      confirmedAt: 2020-11-19T21:38:20.636Z
+    },
+    _id: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    password: '3dcaed7ea3a63dbfaf9e135c0ddfa2f9da3a9f454f08a4abb17f355bcff21564f39c7b32fdb84da70575baf4e9062aa1xh64suPvY42IMkbUTZtxRA==',
+    __v: 0
+  }
+]
+PubSub {
+  request: Request {
+    id: '1606424823852',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+      expiryTime: 1606424853968
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2ODIzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDkwMTY4MjN9.Fycdszxho_cd1mhj05J8z3tEUvsMcWMFJOyoxEC8mLM',
+      expiryTime: 1609016823968
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+UserService {
+  request: Request {
+    id: '1606424823852',
+    user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: {} },
+    hasToken: true
+  },
+  type: 'AUTH_USER_SIGNED_IN',
+  data: {
+    accessToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+      expiryTime: 1606424853968
+    },
+    refreshToken: {
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2ODIzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDkwMTY4MjN9.Fycdszxho_cd1mhj05J8z3tEUvsMcWMFJOyoxEC8mLM',
+      expiryTime: 1609016823968
+    },
+    userId: 5f59b8fc6368501be25f253e,
+    email: 'nihal+test1@cabbuddies.com',
+    ip: '23.119.247.180'
+  }
+}
+{
+  accessToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+    expiryTime: 1606424853968
+  },
+  refreshToken: {
+    value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA5MDE2ODIzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDkwMTY4MjN9.Fycdszxho_cd1mhj05J8z3tEUvsMcWMFJOyoxEC8mLM',
+    expiryTime: 1609016823968
+  },
+  isConfirmed: true,
+  userId: 5f59b8fc6368501be25f253e
+}
+::ffff:127.0.0.1 POST /sign_in 118MS
+logger version v1
+::ffff:127.0.0.1 PUT /api/v1/user/5f59b8fc6368501be25f253e/relation/5fc0168f6363047390a37e74 {} { status: 'accepted' }
+middleware requestProcessor begin
+middleware requestProcessor Request {
+  id: '1606424823983',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '',
+    token: {
+      type: '',
+      value: '',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: 0
+    }
+  },
+  location: { latitude: 0, longitude: 0, raw: {} },
+  raw: { body: {}, query: {}, params: {} },
+  hasToken: false
+}
+{
+  accept: 'application/json, text/plain, */*',
+  'content-type': 'application/json',
+  authorization: 'Access ' +
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+  'user-agent': 'axios/0.20.0',
+  'content-length': '21',
+  host: 'localhost:4000',
+  connection: 'close'
+}
+xForwardedFor undefined req.connection.remoteAddress ::ffff:127.0.0.1
+ip undefined
+getIP [Function: sequential]
+err null ip 23.119.247.180
+ip updated 23.119.247.180
+Access eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg
+middleware requestProcessor Request {
+  id: '1606424823983',
+  user: { isAuthenticated: false, isConfirmed: false, id: '', email: '' },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+      expiryTime: 0,
+      isExpired: true,
+      secondsToExpiry: -1606424824.095
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { status: 'accepted' }, query: {}, params: {} },
+  hasToken: true
+}
+requestProcessor activeTokenCount 1 {
+  id: '5f59b8fc6368501be25f253e',
+  email: 'nihal+test1@cabbuddies.com',
+  expiryTime: 1606424853968,
+  isConfirmed: true,
+  iat: 1606424823,
+  exp: 1606424853
+}
+middleware requestProcessor almost done Request {
+  id: '1606424823983',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+      expiryTime: 1606424853968,
+      isExpired: false,
+      secondsToExpiry: 29.872
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: { body: { status: 'accepted' }, query: {}, params: {} },
+  hasToken: true
+}
+AMJ Request {
+  id: '1606424823983',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+      expiryTime: 1606424853968,
+      isExpired: false,
+      secondsToExpiry: 29.872
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { status: 'accepted' },
+    query: {},
+    params: {
+      userId: '5f59b8fc6368501be25f253e',
+      id: '5fc0168f6363047390a37e74'
+    }
+  },
+  hasToken: true
+}
+AMJ true
+AMJ done
+validateRequestBody {
+  type: 'object',
+  additionalProperties: false,
+  required: [ 'status' ],
+  properties: { status: { type: 'string', enum: [Array] } }
+}
+repository isAuthor 5fc0168f6363047390a37e74 5f59b8fc6368501be25f253e
+repository isAuthor {
+  status: 'requested',
+  _id: 5fc0168f6363047390a37e74,
+  followeeId: '5f59b8fc6368501be25f253e',
+  followerId: '5f59b9366368501be25f2541',
+  author: '5f59b8fc6368501be25f253e',
+  createdAt: 2020-11-26T20:56:47.576Z,
+  lastModifiedAt: 2020-11-26T20:56:47.576Z,
+  __v: 0
+}
+isAuthor true
+user.relation.service Request {
+  id: '1606424823983',
+  user: {
+    isAuthenticated: true,
+    isConfirmed: true,
+    id: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com'
+  },
+  header: {
+    ip: '23.119.247.180',
+    token: {
+      type: 'access',
+      value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTliOGZjNjM2ODUwMWJlMjVmMjUzZSIsImVtYWlsIjoibmloYWwrdGVzdDFAY2FiYnVkZGllcy5jb20iLCJleHBpcnlUaW1lIjoxNjA2NDI0ODUzOTY4LCJpc0NvbmZpcm1lZCI6dHJ1ZSwiaWF0IjoxNjA2NDI0ODIzLCJleHAiOjE2MDY0MjQ4NTN9.4o32M8PWs0ijHA6iX2NkVxXqKwsoqFrQKfvZ05ZiYKg',
+      expiryTime: 1606424853968,
+      isExpired: false,
+      secondsToExpiry: 29.872
+    }
+  },
+  location: {
+    latitude: 38.6841,
+    longitude: -121.0676,
+    raw: {
+      range: [Array],
+      country: 'US',
+      region: 'CA',
+      eu: '0',
+      timezone: 'America/Los_Angeles',
+      city: 'El Dorado Hills',
+      ll: [Array],
+      metro: 862,
+      area: 10
+    }
+  },
+  raw: {
+    body: { status: 'accepted' },
+    query: {},
+    params: {
+      userId: '5f59b8fc6368501be25f253e',
+      id: '5fc0168f6363047390a37e74'
+    }
+  },
+  hasToken: true
+} { status: 'accepted' }
+normalizeJson { status: 'accepted' }
+user.relation.service db update { status: 'accepted' }
+PubSub {
+  request: Request {
+    id: '1606424823983',
+    user: {
+      isAuthenticated: true,
+      isConfirmed: true,
+      id: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com'
+    },
+    header: { ip: '23.119.247.180', token: [Object] },
+    location: { latitude: 38.6841, longitude: -121.0676, raw: [Object] },
+    raw: { body: [Object], query: {}, params: [Object] },
+    hasToken: true
+  },
+  type: 'USER_RELATION_UPDATED',
+  data: {
+    status: 'accepted',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z,
+    __v: 0
+  }
+}
+embedAuthorInformation [
+  {
+    status: 'accepted',
+    _id: 5fc0168f6363047390a37e74,
+    followeeId: '5f59b8fc6368501be25f253e',
+    followerId: '5f59b9366368501be25f2541',
+    author: '5f59b8fc6368501be25f253e',
+    createdAt: 2020-11-26T20:56:47.576Z,
+    lastModifiedAt: 2020-11-26T20:56:47.576Z,
+    __v: 0
+  }
+]
+embedAuthorInformation {
+  '5f59b8fc6368501be25f253e': {
+    preferences: { automaticFollow: false },
+    displayPicture: 'randomer',
+    _id: '5f59b8fc6368501be25f253f',
+    userId: '5f59b8fc6368501be25f253e',
+    email: 'nihal+test1@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    lastModifiedAt: '2020-11-12T21:46:47.156Z',
+    createdAt: '2020-11-26T21:07:04.106Z'
+  },
+  '5f59b9366368501be25f2541': {
+    preferences: { automaticFollow: true },
+    displayPicture: '',
+    _id: '5f59b9366368501be25f2542',
+    userId: '5f59b9366368501be25f2541',
+    email: 'nihal+test2@cabbuddies.com',
+    firstName: 'Nihal',
+    lastName: 'Konda',
+    __v: 0,
+    createdAt: '2020-11-26T21:07:04.106Z',
+    lastModifiedAt: '2020-11-26T21:07:04.106Z'
+  }
+}
+embedAuthorInformation [
+  {
+    status: 'accepted',
+    _id: '5fc0168f6363047390a37e74',
+    followeeId: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T21:07:04.106Z'
+    },
+    followerId: {
+      preferences: [Object],
+      displayPicture: '',
+      _id: '5f59b9366368501be25f2542',
+      userId: '5f59b9366368501be25f2541',
+      email: 'nihal+test2@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      createdAt: '2020-11-26T21:07:04.106Z',
+      lastModifiedAt: '2020-11-26T21:07:04.106Z'
+    },
+    author: {
+      preferences: [Object],
+      displayPicture: 'randomer',
+      _id: '5f59b8fc6368501be25f253f',
+      userId: '5f59b8fc6368501be25f253e',
+      email: 'nihal+test1@cabbuddies.com',
+      firstName: 'Nihal',
+      lastName: 'Konda',
+      __v: 0,
+      lastModifiedAt: '2020-11-12T21:46:47.156Z',
+      createdAt: '2020-11-26T21:07:04.106Z'
+    },
+    createdAt: '2020-11-26T20:56:47.576Z',
+    lastModifiedAt: '2020-11-26T20:56:47.576Z',
+    __v: 0
+  }
+]
+::ffff:127.0.0.1 PUT /5fc0168f6363047390a37e74 124MS
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `ts-node ./src/index.ts`[39m
+{
+  createTransport: [Function],
+  createTestAccount: [Function],
+  getTestMessageUrl: [Function]
+} [Function]
+Mail {
+  _events: [Object: null prototype] {},
+  _eventsCount: 0,
+  _maxListeners: undefined,
+  options: {},
+  _defaults: {},
+  _defaultPlugins: { compile: [ [Function] ], stream: [] },
+  _userPlugins: { compile: [], stream: [] },
+  meta: Map {},
+  dkim: false,
+  transporter: SMTPTransport {
+    _events: [Object: null prototype] {
+      log: [Function],
+      error: [Function],
+      idle: [Function]
+    },
+    _eventsCount: 3,
+    _maxListeners: undefined,
+    options: {
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      auth: [Object],
+      port: 465,
+      secure: true
+    },
+    logger: {
+      info: [Function: info],
+      debug: [Function: debug],
+      error: [Function: error]
+    },
+    name: 'SMTP',
+    version: '2.7.4[client:2.12.0]',
+    mailer: [Circular]
+  },
+  logger: {
+    trace: [Function],
+    debug: [Function],
+    info: [Function],
+    warn: [Function],
+    error: [Function],
+    fatal: [Function]
+  },
+  close: [Function],
+  isIdle: [Function],
+  verify: [Function]
+}
+node-library
+AMJ true true
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ true true
+AMJ true true
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ true false
+AMJ false false
+AMJ true false
+AMJ true false
+AMJ false false
+POST	/api/v1/auth/sign_up
+POST	/api/v1/auth/sign_in
+GET	/api/v1/auth/access_token
+GET	/api/v1/auth/me
+GET	/api/v1/auth/send_confirmation_token
+POST	/api/v1/auth/confirmation_token
+DELETE	/api/v1/auth/sign_out
+DELETE	/api/v1/auth/sign_out_all
+POST	/api/v1/user/search
+PUT	/api/v1/user
+GET	/api/v1/user/me
+GET	/api/v1/user/:id
+POST	/api/v1/user/:userId/relation
+POST	/api/v1/user/:userId/relation/search
+GET	/api/v1/user/:userId/relation/:id
+PUT	/api/v1/user/:userId/relation/:id
+DELETE	/api/v1/user/:userId/relation/:id
+app listening 4000
+db connected

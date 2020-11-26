@@ -16,12 +16,7 @@ class RefreshTokenService extends Services.BaseService {
 
     private constructor(){
         super(new RefreshTokenRepository());
-        Services.PubSub.Organizer.addSubscriberAll([
-            PubSubMessageTypes.AUTH.USER_SIGNED_UP,
-            PubSubMessageTypes.AUTH.USER_SIGNED_IN,
-            PubSubMessageTypes.AUTH.USER_SIGN_OUT,
-            PubSubMessageTypes.AUTH.USER_SIGN_OUT_ALL
-        ],this);
+        Services.PubSub.Organizer.addSubscriberAll(PubSubMessageTypes.AUTH,this);
     }
 
     processMessage(message:Services.PubSub.Message){
@@ -30,6 +25,7 @@ class RefreshTokenService extends Services.BaseService {
             
             case PubSubMessageTypes.AUTH.USER_SIGNED_UP:
             case PubSubMessageTypes.AUTH.USER_SIGNED_IN:
+            case PubSubMessageTypes.AUTH.USER_CONFIRMED:
                 this.refreshTokenCreate(message);
                 break;
 

@@ -27,7 +27,7 @@ Content-Type: application/json
 
 {
     "preferences": {
-        "automaticFollow": true
+        "automaticFollow": false
     },
     "displayPicture": "randomer",
     "firstName": "Nihal",
@@ -41,10 +41,10 @@ Authorization: Access {{accessToken}}
 
 ###
 
-PUT http://localhost:4000/api/v1/user/5f59b8fc6368501be25f253e/relation/5fa468b14c3ff1791e9967bb
+PUT http://localhost:4000/api/v1/user/5f59b8fc6368501be25f253e/relation/5fadad6073e68fef7d4195f6
 Authorization: Access {{accessToken}}
 Content-Type: application/json
 
 {
-    "status":"rejected"
+    "status":"accepted"
 }

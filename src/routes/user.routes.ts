@@ -13,7 +13,7 @@ const validatorMiddleware = new Middlewares.ValidatorMiddleware();
 router.param('id',Middlewares.addParamToRequest());
 router.param('userId',Middlewares.addParamToRequest());
 
-router.get('/',Middlewares.authCheck(false),userController.getAll)
+router.post('/search',Middlewares.authCheck(false),userController.getAll)
 
 router.put('/',Middlewares.authCheck(true),validatorMiddleware.validateRequestBody({
     "type": "object",

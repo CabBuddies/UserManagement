@@ -13,7 +13,7 @@ const validatorMiddleware = new Middlewares.ValidatorMiddleware();
 
 router.param('id',Middlewares.addParamToRequest());
 
-router.post('/',Middlewares.authCheck(true),validatorMiddleware.validateRequestBody({
+router.post('/',Middlewares.authCheck(true,true),validatorMiddleware.validateRequestBody({
     "type": "object",
     "additionalProperties": false,
     "required": ["status"],
@@ -25,7 +25,7 @@ router.post('/',Middlewares.authCheck(true),validatorMiddleware.validateRequestB
     }
 }),userRelationController.create);
 
-router.get('/',Middlewares.authCheck(true),userRelationController.getAll);
+router.post('/search',Middlewares.authCheck(true),userRelationController.getAll);
 
 router.get('/:id',Middlewares.authCheck(true),userRelationController.get);
 
