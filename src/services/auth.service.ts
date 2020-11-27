@@ -47,6 +47,7 @@ class AuthService extends Services.BaseService {
             password,
             firstName,
             lastName,
+            displayPicture,
             registrationType
         } = user
 
@@ -70,7 +71,13 @@ class AuthService extends Services.BaseService {
             }
         }
 
+        if(registrationType === 'google'){
+            entity.account.confirmedAt = new Date();
+        }
+
         entity = await this.create(request,entity)
+
+        const isConfirmed=entity.account.confirmedAt !== undefined;
 
         if(!entity)
             throw this.buildError(400);
@@ -81,7 +88,7 @@ class AuthService extends Services.BaseService {
             id:entity._id,
             email,
             expiryTime:0,
-            isConfirmed:false
+            isConfirmed
         };
 
         const {accessToken,refreshToken} = this.createJwt(request,auth,true);
@@ -97,11 +104,12 @@ class AuthService extends Services.BaseService {
                 email,
                 firstName,
                 lastName,
+                displayPicture,
                 ip:request.getIP()
             }
         });
 
-        return {accessToken,refreshToken,isConfirmed:false,userId:entity._id}
+        return {accessToken,refreshToken,isConfirmed,userId:entity._id}
     }
 
     signIn = async(request:Helpers.Request,user) => {

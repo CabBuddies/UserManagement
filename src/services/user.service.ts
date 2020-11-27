@@ -48,14 +48,16 @@ class UserService extends Services.BaseService{
             userId,
             email,
             firstName,
-            lastName
+            lastName,
+            displayPicture
         } = event.data;
         
         this.create(event.request,{
             userId,
             email,
             firstName,
-            lastName
+            lastName,
+            displayPicture:displayPicture||''
         });
 
     }

@@ -49,6 +49,9 @@ router.post('/sign_up',validatorMiddleware.validateRequestBody({
         "password":{
             "type":"string"
         },
+        "displayPicture":{
+            "type":"string"
+        },
         "registrationType":{
             "type":"string",
             "enum":['inapp', 'google', 'facebook', 'twitter', 'linkedin']
