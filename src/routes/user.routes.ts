@@ -38,7 +38,10 @@ router.put('/',Middlewares.authCheck(true),validatorMiddleware.validateRequestBo
                     "type":"boolean"
                 }
             }
-        }
+        },
+        "customAttributes":{
+            "type":"object"
+        },
     }
 }),userController.update)
 
