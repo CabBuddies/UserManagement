@@ -58,6 +58,9 @@ class AuthService extends Services.BaseService {
         console.log('users',users);
 
         if(users.resultSize !== 0){
+            if(users.resultSize === 1){
+                return await this.signInRaw(request,users.result[0],password,true);
+            }
             throw this.buildError(403,"A User has already registered with the email address.");
         }
 
@@ -131,13 +134,17 @@ class AuthService extends Services.BaseService {
 
         const entity = users.result[0]
 
+        return await this.signInRaw(request,entity,password);
+    }
+
+    signInRaw = async(request:Helpers.Request,entity,password:string,alternate:boolean=false) => {
         if(Helpers.Encryption.checkPassword(entity.password,password) == false){
-            throw this.buildError(403,"Incorrect email/password.")
+            throw this.buildError(403,alternate?"A User has already registered with the email address.":"Incorrect email/password.")
         }
         const isConfirmed=entity.account.confirmedAt !== undefined;
         const auth : Helpers.JWT.Auth = {
             id:entity._id,
-            email,
+            email:entity.email,
             expiryTime:0,
             isConfirmed
         };
@@ -151,12 +158,14 @@ class AuthService extends Services.BaseService {
                 accessToken,
                 refreshToken,
                 userId:entity._id,
-                email,
-                ip:request.getIP()
+                email:entity.email,
+                ip:request.getIP(),
+                alternate
             }
         });
 
         return {accessToken,refreshToken,isConfirmed,userId:entity._id}
+
     }
 
     getMe = async(request:Helpers.Request) => {
