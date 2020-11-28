@@ -26,6 +26,12 @@ const userSchema = new mongoose.Schema({
         trim: true,
         required:'Last Name is required!'
     },
+    fullName:{
+        type: String,
+        trim: true,
+        lowercase: true,
+        default:''
+    },
     displayPicture:{
         type: String,
         trim: true,

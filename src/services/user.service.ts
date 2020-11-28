@@ -57,6 +57,7 @@ class UserService extends Services.BaseService{
             email,
             firstName,
             lastName,
+            fullName:`${firstName.toLowerCase()} ${lastName.toLowerCase()}`,
             displayPicture:displayPicture||''
         });
 
@@ -83,6 +84,7 @@ class UserService extends Services.BaseService{
 
     update = async(request:Helpers.Request, entityId, body) =>{
         body.lastModifiedAt = new Date();
+        body.fullName = `${body.firstName.toLowerCase()} ${body.lastName.toLowerCase()}`;
         return await this.repository.updateUserByUserId(request.getUserId(),Helpers.JSON.normalizeJson(body));
     }
 }
